@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="standard_blue">#0079ff</color>
+    <color name="text_color">#222627</color>
+    <color name="grey_color">#8d8d8d</color>
+    <color name="tips_color">#f73131</color>
+    <color name="pick_color">#f6514d</color>
+    <color name="take_order">#fda305</color>
+    <color name="order_detail">#0ffdbf</color>
+    <color name="order_detail_text">#404241</color>
+</resources>

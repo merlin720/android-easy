@@ -1,0 +1,39 @@
+ext {
+
+  android = [
+      compileSdkVersion: 29,
+      targetSdkVersion: 29,
+      appid: "com.easy.easycan",
+      minSdkVersion: 19,
+      buildToolsVersion: "29.0.2",
+
+  ]
+  dependencies = [recyclerview: 'com.android.support:recyclerview-v7:27.1.1',
+      appcompat_v7: 'com.android.support:appcompat-v7:27.1.1',
+      appcompat_v4: 'com.android.support:support-v4:27.1.1',
+      gson: 'com.google.code.gson:gson:2.8.5',
+      brvah: 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
+      espresso: 'com.android.support.test.espresso:espresso-core:3.0.2',
+      constraint: 'com.android.support.constraint:constraint-layout:1.1.3',
+      /*事件总线程*/
+      "eventbus": 'org.greenrobot:eventbus:3.1.1',
+      // 基础依赖包，必须要依赖
+      immersionbar: 'com.gyf.immersionbar:immersionbar:3.0.0-beta05',
+      // fragment快速实现（可选）
+      immersionbarfragment: 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta05',
+      rxjava: 'io.reactivex.rxjava3:rxjava:3.0.0-RC0',
+      "rxandroid": 'io.reactivex.rxjava2:rxandroid:2.0.1',
+      "rxbinding2": 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+      //腾讯ui开发库
+      'qmui': 'com.qmuiteam:qmui:1.4.0',
+      'multidex': 'com.android.support:multidex:1.0.3',
+      "rxjava2": 'io.reactivex.rxjava2:rxjava:2.2.3',
+      "okhttp3": 'com.squareup.okhttp3:okhttp:3.11.0',
+      'glide': 'com.github.bumptech.glide:glide:4.9.0',
+      'SmartRefreshLayout': 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0',
+      'networking': 'com.amitshekhar.android:android-networking:1.0.2',
+      'permissionsdispatcher': 'org.permissionsdispatcher:permissionsdispatcher:4.5.0',
+      'permissionsdispatcherProcessor': 'org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0',
+
+  ]
+}
