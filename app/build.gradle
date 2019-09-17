@@ -74,6 +74,7 @@ dependencies {
     implementation dep.SmartRefreshLayout
     implementation dep.networking
     implementation 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+    //glide
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation dep.glide
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.9.0'
@@ -86,9 +87,12 @@ dependencies {
     implementation rootProject.ext.dependencies["rxjava2"]
     implementation rootProject.ext.dependencies["okhttp3"]
     implementation rootProject.ext.dependencies["rxandroid"]
+    implementation dep.rxbinding2
     implementation dep.qmui
-    implementation 'com.qmuiteam:arch:0.6.1'
+    implementation dep.qmuiarch
     implementation dep.multidex
+    implementation dep.banner
+    /**kotlin*/
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

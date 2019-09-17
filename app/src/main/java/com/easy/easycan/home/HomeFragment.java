@@ -6,6 +6,7 @@ import android.view.View;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.news.NewsListActivity;
+import com.jakewharton.rxbinding2.view.RxView;
 
 /**
  * @author merlin720
