@@ -19,10 +19,17 @@ public abstract class BaseFragment extends QMUIFragment {
 
   @Override protected View onCreateView() {
     View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(),null);
+
     initView(view);
+    initData();
+    setListener();
     return view;
   }
   protected abstract void initView(View view);
 
   protected abstract @LayoutRes int getLayoutId();
+
+  protected void initData(){}
+
+  protected void setListener(){}
 }

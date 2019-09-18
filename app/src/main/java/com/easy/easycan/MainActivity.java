@@ -27,7 +27,6 @@ public class MainActivity extends BaseActivity {
 
     private RadioGroup mRadioGroup;
 
-    private RadioButton radioButton;
 
 
     @Override
@@ -39,8 +38,6 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         initFragment();
         mRadioGroup = findViewById(R.id.radio_group_button);
-        radioButton = findViewById(R.id.radio_button_home);
-
     }
 
     @Override
@@ -65,6 +62,7 @@ public class MainActivity extends BaseActivity {
         fragments.put(2, publishFragment);
         fragments.put(3, excellentGoodsFragment);
         fragments.put(4, profileFragment);
+        getSupportFragmentManager().beginTransaction().replace(R.id.home_container, homeFragment).commit();
     }
 
     @Override
@@ -98,7 +96,6 @@ public class MainActivity extends BaseActivity {
             }
 
         });
-        // 保证第一次会回调OnCheckedChangeListener
-        radioButton.setChecked(true);
+
     }
 }

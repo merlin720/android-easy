@@ -14,7 +14,9 @@ import java.text.DecimalFormat;
 public class CommonUtils {
     public static final boolean isDebug = !BuildConfig.ISRELEASE;
 
-    public static final String IP = "http://192.168.1.234:8080/";
+    public static final String IP = "http://www.huagongwuliu.com";
+
+    public static final String BANNER_URL = IP + "/api/system-banner/index";
 
     public static final int TYPE_TIMELINE_PUBLIC = 1;
     public static final int TYPE_TIMELINE_FRIEND = 2;
