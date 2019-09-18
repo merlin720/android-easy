@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/android-app-app.iml" filepath="$PROJECT_DIR$/app/android-app-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-app-easycan.iml" filepath="$PROJECT_DIR$/android-app-easycan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easycan/android-app-easycan-easycan.iml" filepath="$PROJECT_DIR$/easycan/android-app-easycan-easycan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycan.iml" filepath="$PROJECT_DIR$/easycan.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycan/easycan-easycan.iml" filepath="$PROJECT_DIR$/easycan/easycan-easycan.iml" />

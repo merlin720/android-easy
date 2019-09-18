@@ -14,6 +14,7 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.view.InnerGridView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -40,7 +41,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     private String img = CommonUtils.IP + "/static/banner/20190412.png";
 
     private Banner banner;
-    private GridView gridView;
+    private InnerGridView gridView;
 
     @Override
     protected int getLayoutId() {
