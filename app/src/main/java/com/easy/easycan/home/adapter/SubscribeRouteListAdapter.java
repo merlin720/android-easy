@@ -23,6 +23,6 @@ public class SubscribeRouteListAdapter extends CommonAdapter<SubscribeBean> {
 
     @Override
     protected void convert(ViewHolder viewHolder, SubscribeBean item, int position) {
-        viewHolder.setText(R.id.qmui_tab_segment_item_id,item.getFrom());
+        viewHolder.setText(R.id.subscribe_route_item_from,item.getFrom());
     }
 }

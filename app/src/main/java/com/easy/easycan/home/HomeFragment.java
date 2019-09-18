@@ -15,6 +15,8 @@ import com.easy.easycan.GlideImageLoader;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
+import com.easy.easycan.home.adapter.SubscribeRouteListAdapter;
+import com.easy.easycan.home.bean.SubscribeBean;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.view.InnerGridView;
 import com.easy.easycan.view.InnerListView;
@@ -121,6 +123,17 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                         Toast.makeText(getActivity(), "banner 获取失败", Toast.LENGTH_LONG).show();
                     }
                 });
+
+
+        List<SubscribeBean> list = new ArrayList<>();
+        SubscribeBean subscribeBean = new SubscribeBean();
+        subscribeBean.setFrom("东营/烟台/德州");
+        subscribeBean.setTo("西安");
+        list.add(subscribeBean);
+        list.add(subscribeBean);
+        SubscribeRouteListAdapter adapter = new SubscribeRouteListAdapter(getActivity(),R.layout.subscribe_list_item,list);
+        mSubscribeRouteListView.setAdapter(adapter);
+
     }
 
     @Override
