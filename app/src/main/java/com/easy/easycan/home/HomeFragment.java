@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -16,6 +17,7 @@ import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.view.InnerGridView;
+import com.easy.easycan.view.InnerListView;
 import com.hjq.toast.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.youth.banner.Banner;
@@ -51,6 +53,10 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     private InnerGridView gridView;
     private LinearLayout mSubscribeRoute;
 
+    private TextView subscribe_route_content_go_sub;
+
+    private InnerListView mSubscribeRouteListView;
+
 
     @Override
     protected int getLayoutId() {
@@ -64,10 +70,13 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         initBanner();
 
         gridView = view.findViewById(R.id.home_grid_view);
+        gridView.setVisibility(View.VISIBLE);
         gridView.setAdapter(new GridAdapter(getActivity(), titles));
         gridView.setNumColumns(4);
 
         mSubscribeRoute = view.findViewById(R.id.subscribe_route_title_ll);
+        subscribe_route_content_go_sub = view.findViewById(R.id.subscribe_route_content_go_sub);
+        mSubscribeRouteListView = view.findViewById(R.id.subscribe_route_list_view);
 
     }
 
@@ -128,6 +137,15 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     @Override
                     public void accept(Object o) throws Exception {
                         ToastUtils.show("查看更多线路推荐");
+                    }
+                });
+
+        Disposable disposable1 = RxView.clicks(subscribe_route_content_go_sub)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ToastUtils.show("去订阅跳转");
                     }
                 });
     }

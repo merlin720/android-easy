@@ -93,6 +93,9 @@ dependencies {
     implementation dep.multidex
     implementation dep.banner
     implementation dep.toast
+
+    implementation dep.brvah
+    implementation dep.baseadapter
     /**kotlin*/
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
