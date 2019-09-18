@@ -9,6 +9,7 @@ import com.easy.easycan.network.HttpLoggingInterceptor;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.util.LogUtils;
 import com.easy.easycan.util.Utils;
+import com.hjq.toast.ToastUtils;
 import com.jacksonandroidnetworking.JacksonParserFactory;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -63,6 +64,7 @@ public class EasyCanApplication extends Application {
         initNetwork();
         MultiDex.install(this) ;
         QMUISwipeBackActivityManager.init(this);
+        ToastUtils.init(this);
     }
 
     /**

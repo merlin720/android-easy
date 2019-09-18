@@ -26,7 +26,7 @@ ext {
                     "rxbinding2"                    : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
                     //腾讯ui开发库
                     'qmui'                          : 'com.qmuiteam:qmui:1.4.0',
-                    'qmuiarch'                          : 'com.qmuiteam:arch:0.6.1',
+                    'qmuiarch'                      : 'com.qmuiteam:arch:0.6.1',
                     //方法数
                     'multidex'                      : 'com.android.support:multidex:1.0.3',
                     "rxjava2"                       : 'io.reactivex.rxjava2:rxjava:2.2.3',
@@ -38,5 +38,6 @@ ext {
                     'permissionsdispatcher'         : 'org.permissionsdispatcher:permissionsdispatcher:4.5.0',
                     'permissionsdispatcherProcessor': 'org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0',
                     'banner'                        : 'com.youth.banner:banner:1.4.10',
+                    'toast'                         : 'com.hjq:toast:8.0',
     ]
 }

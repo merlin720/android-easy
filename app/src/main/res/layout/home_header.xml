@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -39,13 +40,170 @@
                 android:id="@+id/home_header_goods_total_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_marginTop="@dimen/d_8"
                 android:layout_toRightOf="@+id/home_header_goods_total_img"
                 android:text="13667万"
-                android:layout_marginStart="@dimen/d_10"
-                android:layout_marginTop="@dimen/d_15"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/s_15" />
+                android:textSize="@dimen/s_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_header_goods_total_tv"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_toRightOf="@+id/home_header_goods_total_img"
+                android:text="货源总数"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/s_12" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_weight="1"
+            android:background="@drawable/home_car_total_num">
+
+            <ImageView
+                android:id="@+id/home_header_car_total_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/home_car_total_inner_bg" />
+
+            <TextView
+                android:id="@+id/home_header_car_total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_marginTop="@dimen/d_8"
+                android:layout_toRightOf="@+id/home_header_car_total_img"
+                android:text="13667万"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/s_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_header_car_total_tv"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_toRightOf="@+id/home_header_car_total_img"
+                android:text="货源总数"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/s_12" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_marginEnd="@dimen/d_10"
+            android:layout_weight="1"
+            android:background="@drawable/home_money_bg">
+
+            <ImageView
+                android:id="@+id/home_header_money_total_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/home_money_total_inner_bg" />
+
+            <TextView
+                android:id="@+id/home_header_money_total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_marginTop="@dimen/d_8"
+                android:layout_toRightOf="@+id/home_header_money_total_img"
+                android:text="13667万"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/s_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_header_money_total_tv"
+                android:layout_marginStart="@dimen/d_10"
+                android:layout_toRightOf="@+id/home_header_money_total_img"
+                android:text="货源总数"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/s_12" />
+        </RelativeLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subscribe_route_title_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_40">
+
+        <TextView
+            android:id="@+id/subscribe_route_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_weight="1"
+            android:text="@string/subscribe_route"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+
+        <TextView
+            android:id="@+id/subscribe_route_title_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/d_10"
+            android:drawableEnd="@drawable/arrow_right"
+            android:text="@string/look_more"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/s_11" />
+    </LinearLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_50"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:background="@color/standard_blue">
+
+        <TextView
+            android:id="@+id/subscribe_route_content_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="@string/subscribe_goods_route"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subscribe_route_content_title"
+            android:layout_marginStart="@dimen/d_10"
+            android:text="@string/subscribe_time_push"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/d_10"
+            android:background="@drawable/corner_white"
+            android:paddingStart="@dimen/d_10"
+            android:paddingTop="@dimen/d_3"
+            android:paddingEnd="@dimen/d_10"
+            android:paddingBottom="@dimen/d_3"
+            android:text="去订阅"
+            android:textColor="@color/standard_blue"
+            android:textSize="@dimen/s_12" />
+
+    </RelativeLayout>
 </LinearLayout>

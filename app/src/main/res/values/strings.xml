@@ -4,4 +4,8 @@
     <string name="easy_glide_save_succss">保存图片成功</string>
     <string name="easy_glide_save_failed">保存失败</string>
     <string name="looking_for_car">我要找车</string>
+    <string name="subscribe_route">订阅路线</string>
+    <string name="look_more">查看更多</string>
+    <string name="subscribe_goods_route">订阅发货线路、常跑车辆路线</string>
+    <string name="subscribe_time_push">订阅实时推送、返程周边一起掌握</string>
 </resources>

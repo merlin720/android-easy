@@ -4,7 +4,9 @@
     <dimen name="status_bar_height">0dp</dimen>
 
     <dimen name="d_220">220dp</dimen>
+    <dimen name="d_50">50dp</dimen>
     <dimen name="d_48">48dp</dimen>
+    <dimen name="d_40">40dp</dimen>
     <dimen name="d_20">20dp</dimen>
     <dimen name="d_15">15dp</dimen>
     <dimen name="d_12">12dp</dimen>
@@ -13,10 +15,12 @@
     <dimen name="d_5">5dp</dimen>
     <dimen name="d_3">3dp</dimen>
 
+    <dimen name="s_18">18sp</dimen>
     <dimen name="s_16">16sp</dimen>
     <dimen name="s_15">15sp</dimen>
     <dimen name="s_14">14sp</dimen>
     <dimen name="s_12">12sp</dimen>
+    <dimen name="s_11">11sp</dimen>
     <dimen name="s_10">10sp</dimen>
 
 

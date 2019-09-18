@@ -3,6 +3,7 @@ package com.easy.easycan.home;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -15,6 +16,8 @@ import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.view.InnerGridView;
+import com.hjq.toast.ToastUtils;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -24,6 +27,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * @author merlin720
@@ -42,6 +49,8 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
     private Banner banner;
     private InnerGridView gridView;
+    private LinearLayout mSubscribeRoute;
+
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +66,8 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         gridView = view.findViewById(R.id.home_grid_view);
         gridView.setAdapter(new GridAdapter(getActivity(), titles));
         gridView.setNumColumns(4);
+
+        mSubscribeRoute = view.findViewById(R.id.subscribe_route_title_ll);
 
     }
 
@@ -111,6 +122,14 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                 Toast.makeText(getActivity(), titles[i], Toast.LENGTH_LONG).show();
             }
         });
+        Disposable disposable = RxView.clicks(mSubscribeRoute)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ToastUtils.show("查看更多线路推荐");
+                    }
+                });
     }
 
     @Override
