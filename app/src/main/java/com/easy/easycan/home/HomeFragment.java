@@ -1,5 +1,6 @@
 package com.easy.easycan.home;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -10,6 +11,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.easy.easycan.home.news.NewsListActivity;
 import com.easy.easycan.util.GlideImageLoader;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
@@ -78,6 +80,8 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     private InnerListView mNewLocalSourceCarListView;
     private LinearLayout mNewLocalSourceCarLl;
 
+    private LinearLayout news_list_ll;
+
     private TabLayout mTabLayout;
 
     private InnerViewPager innerViewPager;
@@ -107,10 +111,12 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         mNewLocalSourceListView = view.findViewById(R.id.new_local_source_list_view);
         mNewLocalSourceCarListView = view.findViewById(R.id.new_local_source_car_list_view);
 
+        news_list_ll = view.findViewById(R.id.news_list_ll);
         mTabLayout = view.findViewById(R.id.home_news_tl_tabs);
         innerViewPager = view.findViewById(R.id.home_news_vp_content);
         innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0));
         mTabLayout.setupWithViewPager(innerViewPager);
+        innerViewPager.setOffscreenPageLimit(3);
     }
 
     /**
@@ -208,6 +214,14 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     @Override
                     public void accept(Object o) throws Exception {
                         ToastUtils.show("查看更多新线路资源");
+                    }
+                });
+        Disposable disposable4 = RxView.clicks(news_list_ll)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        startActivity(new Intent(getActivity(), NewsListActivity.class));
                     }
                 });
     }

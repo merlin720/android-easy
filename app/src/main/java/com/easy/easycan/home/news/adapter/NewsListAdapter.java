@@ -1,5 +1,6 @@
 package com.easy.easycan.home.news.adapter;
 
+import android.text.Html;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,6 @@ public class NewsListAdapter extends BaseQuickAdapter<NewsListBean, BaseViewHold
         ImageView imageView = helper.getView(R.id.news_list_item_img);
         EasyGlide.loadImage(mContext,item.getImage(),imageView);
         helper.setText(R.id.news_list_item_title,item.getTitle());
-        helper.setText(R.id.news_list_item_content,item.getContent());
+        helper.setText(R.id.news_list_item_content, Html.fromHtml(item.getContent()));
     }
 }

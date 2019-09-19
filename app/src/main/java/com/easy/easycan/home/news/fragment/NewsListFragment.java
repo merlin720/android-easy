@@ -48,7 +48,7 @@ public class NewsListFragment extends QMUIFragment {
     private int mType;
 
     private RecyclerView recyclerView;
-    NewsListAdapter adapter;
+    private NewsListAdapter adapter;
 
 
     protected void initView(View view) {
@@ -62,7 +62,6 @@ public class NewsListFragment extends QMUIFragment {
     @Override
     protected View onCreateView() {
         View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(),null);
-        ToastUtils.show("ssssssssssssss");
         initView(view);
         initData();
         return view;
@@ -70,60 +69,39 @@ public class NewsListFragment extends QMUIFragment {
 
 
     protected void initData() {
-        ToastUtils.show("initDatainitDatainitDatainitDatainitData");
 
+        AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
+                .addQueryParameter("category_code", "wuliu")
+                .addQueryParameter("channel_code", "zixun")
+                .addQueryParameter("limit", "5")
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        String data = null;
+                        try {
+                            data = response.getString("data");
+                            JSONObject jsonObject = new JSONObject(data);
+                            String item =  jsonObject.getString("items");
 
-            List<NewsListBean> list = new ArrayList<>();
-            NewsListBean newsListBean = new NewsListBean();
-            newsListBean.setTitle("交通丨陕西G210国道城区过境线，限行货运车辆！");
-            newsListBean.setContent("<section>自8月11日起榆林市公安局交警支队对四轴（含）以上重中型货运车辆通行G210国道实施限行管理。</section><section><img src=\\\"http://yiguan-main.oss-cn-beijing.aliyuncs.com/2019-08/a68e697e/3.png\\\" style=\\\"max-width:100%;\\\"><br></section><section>限行路段：G210国道城区过境线K571+800M（北至运煤专线）至K600+500M段（南至榆绥高速榆林南收费站引线十字）。<br></section><section><strong>限行车辆：</strong><strong>四轴（含）以上重中型货运车辆</strong></section><section>绕行路线：由北向南途经限行路段的限行车辆从榆神高速金鸡滩收费站入口、榆绥高速牛家梁收费站入口进入高速绕行或经绕城快速干道西段通行。</section><section>由南向北途经限行路段的限行车辆从榆绥高速榆林南收费站入口进入高速绕行或经绕城快速干道西段通行。</section><section>限行路段东部进入限行路段的限行车辆，沿榆麻路从麻黄梁收费站入口进入榆佳高速或从常乐堡进入运煤专线，经郭家伙场从绕城快速干道西段、南段绕行。</section><p><br></p>");
-            newsListBean.setImage("http://yiguan-main.oss-cn-beijing.aliyuncs.com/2019-08/5d57331c/2019_7_29.jpeg");
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<List<NewsListBean>>(){}.getType();
+                            List<NewsListBean> list = gson.fromJson(item,type);
 
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            list.add(newsListBean);
-            adapter.setNewData(list);
+                            adapter.setNewData(list);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
+                    }
 
-//        http://www.huagongwuliu.com/api/news/index?channel_code=zixun&category_code=wuliu
-        HashMap<String,String> map = new HashMap<>();
-        map.put("channel_code","zixun");
-        map.put("category_code","wuliu");
-        NetHelper.get(CommonUtils.HOME_NEWS_LIST, map, new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // do anything with response
-
-            }
-
-            @Override
-            public void onError(ANError anError) {
-
-            }
-        });
-//        AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
-//                .addPathParameter("channel_code", "zixun")
-//                .addQueryParameter("category_code", "wuliu")
-//                .setTag("test")
-//                .setPriority(Priority.MEDIUM)
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError error) {
-//                        // handle error
-//                    }
-//                });
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
     }
 
 

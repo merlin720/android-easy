@@ -2,11 +2,13 @@ package com.easy.easycan.home.news;
 
 import android.os.Bundle;
 import android.util.SparseArray;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -19,12 +21,14 @@ import com.easy.easycan.me.ProfileFragment;
 import com.easy.easycan.publish.PublishFragment;
 import com.easy.easycan.trade.TradeFloorFragment;
 import com.google.android.material.tabs.TabLayout;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 
 public class NewsListActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-
+    private QMUITopBar mTopBar;
 
     @Override
     protected int setLayoutId() {
@@ -35,9 +39,27 @@ public class NewsListActivity extends BaseActivity {
     protected void initView() {
         mTabLayout = findViewById(R.id.tl_tabs);
         mViewPager = findViewById(R.id.vp_content);
-        mViewPager.setAdapter(new NewsListPageAdapter(getSupportFragmentManager(),0));
+        mViewPager.setAdapter(new NewsListPageAdapter(getSupportFragmentManager(), 0));
         mTabLayout.setupWithViewPager(mViewPager);
+
+        QMUIStatusBarHelper.translucent(this);
+        initTopBar();
+
     }
+
+    private void initTopBar() {
+        mTopBar = findViewById(R.id.news_list_title);
+        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.slide_still, R.anim.slide_out_right);
+            }
+        });
+
+        mTopBar.setTitle("新闻列表");
+    }
+
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {

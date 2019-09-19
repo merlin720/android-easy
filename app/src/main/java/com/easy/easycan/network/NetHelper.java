@@ -24,7 +24,7 @@ public class NetHelper {
      */
     public static void get(String url, Map<String, String> param, JSONObjectRequestListener listener) {
         AndroidNetworking.get(url)
-                .addPathParameter(param)
+                .addQueryParameter(param)
                 .addQueryParameter("limit", "3")
                 .addHeaders("token", "1234")
                 .setTag(TAG)

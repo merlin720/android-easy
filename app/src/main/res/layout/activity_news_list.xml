@@ -4,15 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     tools:context=".home.news.NewsListActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/news_list_title"
+        android:layout_width="match_parent"
+        app:qmui_topbar_title_color="@color/text_color"
+        app:qmui_topbar_left_back_drawable_id="@drawable/left_arrow"
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tl_tabs"
         android:layout_width="match_parent"
-        app:tabIndicatorFullWidth="false"
+        android:layout_height="40dp"
         app:tabIndicatorColor="@color/qmui_config_color_blue"
-        android:layout_height="40dp" />
+        app:tabIndicatorFullWidth="false" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_content"

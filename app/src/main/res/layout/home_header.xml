@@ -377,15 +377,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!--本地新车源title-->
+    <LinearLayout
+        android:id="@+id/news_list_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_40">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_10"
-        android:layout_marginStart="@dimen/d_10"
-        android:text="@string/chemical_news"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/s_15" />
+        <TextView
+            android:id="@+id/news_list_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_weight="1"
+            android:text="@string/chemical_news"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+
+        <TextView
+            android:id="@+id/news_list_title_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/d_10"
+            android:drawableEnd="@drawable/arrow_right"
+            android:text="@string/look_more"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/s_11" />
+    </LinearLayout>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/home_news_tl_tabs"
