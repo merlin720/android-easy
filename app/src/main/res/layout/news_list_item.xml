@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
+    android:layout_marginStart="@dimen/d_10"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/news_list_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_toStartOf="@+id/news_list_item_img"
+        android:maxLines="2"
+        android:text="交通运输部等多部门加快道路货运行业货运行业"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+
+    <TextView
+        android:id="@+id/news_list_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/news_list_item_title"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_toStartOf="@+id/news_list_item_img"
+        android:maxLines="2"
+        android:text="交通运输部等多部门加快道路货运行业货运行业"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_12" />
+
+    <ImageView
+        android:id="@+id/news_list_item_img"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/d_5" />
+</RelativeLayout>

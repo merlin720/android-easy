@@ -1,4 +1,4 @@
-package com.easy.easycan;
+package com.easy.easycan.util;
 
 import android.content.Context;
 import android.widget.ImageView;

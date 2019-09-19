@@ -2,18 +2,15 @@ package com.easy.easycan.home;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.viewpager.widget.ViewPager;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.easy.easycan.GlideImageLoader;
+import com.easy.easycan.util.GlideImageLoader;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;

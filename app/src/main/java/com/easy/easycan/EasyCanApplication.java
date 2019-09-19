@@ -7,6 +7,7 @@ import androidx.multidex.MultiDex;
 import com.androidnetworking.AndroidNetworking;
 import com.easy.easycan.network.HttpLoggingInterceptor;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.util.HttpLogInterceptor;
 import com.easy.easycan.util.LogUtils;
 import com.easy.easycan.util.Utils;
 import com.hjq.toast.ToastUtils;

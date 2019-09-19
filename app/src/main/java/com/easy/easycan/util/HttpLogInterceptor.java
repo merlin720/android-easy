@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.easy.easycan;
+package com.easy.easycan.util;
 
 import android.text.TextUtils;
 

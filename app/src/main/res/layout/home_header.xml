@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <com.youth.banner.Banner
@@ -396,5 +397,5 @@
     <com.easy.easycan.view.InnerViewPager
         android:id="@+id/home_news_vp_content"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="match_parent" />
 </LinearLayout>
