@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.youth.banner.Banner
@@ -133,7 +134,7 @@
                 android:textSize="@dimen/s_12" />
         </RelativeLayout>
     </LinearLayout>
-
+    <!--订阅路线title-->
     <LinearLayout
         android:id="@+id/subscribe_route_title_ll"
         android:layout_width="match_parent"
@@ -161,7 +162,7 @@
             android:textColor="@color/grey_color"
             android:textSize="@dimen/s_11" />
     </LinearLayout>
-
+    <!--订阅路线content-->
     <RelativeLayout
 
         android:layout_width="match_parent"
@@ -211,5 +212,189 @@
     <com.easy.easycan.view.InnerListView
         android:id="@+id/subscribe_route_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <!--本地新货源title-->
+    <LinearLayout
+        android:id="@+id/new_local_source_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_40">
+
+        <TextView
+            android:id="@+id/new_local_source_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_weight="1"
+            android:text="@string/new_local_source"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+
+        <TextView
+            android:id="@+id/new_local_source_title_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/d_10"
+            android:drawableEnd="@drawable/arrow_right"
+            android:text="@string/look_more"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/s_11" />
+    </LinearLayout>
+    <!--本地新货源content-->
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_50"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:background="@android:color/holo_purple">
+
+        <TextView
+            android:id="@+id/new_local_source_content_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="@string/new_global_local_source"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/new_local_source_content_title"
+            android:layout_marginStart="@dimen/d_10"
+            android:text="@string/new_global_local_source_car"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_10" />
+
+        <TextView
+            android:id="@+id/new_local_source_content_go_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/d_10"
+            android:background="@drawable/corner_white"
+            android:paddingStart="@dimen/d_10"
+            android:paddingTop="@dimen/d_3"
+            android:paddingEnd="@dimen/d_10"
+            android:paddingBottom="@dimen/d_3"
+            android:text="去查看"
+            android:textColor="@color/standard_blue"
+            android:textSize="@dimen/s_12" />
+
+    </RelativeLayout>
+
+    <com.easy.easycan.view.InnerListView
+        android:id="@+id/new_local_source_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <!--本地新车源title-->
+    <LinearLayout
+        android:id="@+id/new_local_source_car_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_40">
+
+        <TextView
+            android:id="@+id/new_local_source_car_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_weight="1"
+            android:text="@string/new_local_source_car"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+
+        <TextView
+            android:id="@+id/new_local_source_car_title_more_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/d_10"
+            android:drawableEnd="@drawable/arrow_right"
+            android:text="@string/look_more"
+            android:textColor="@color/grey_color"
+            android:textSize="@dimen/s_11" />
+    </LinearLayout>
+    <!--本地新车源content-->
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_50"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:background="@color/take_order">
+
+        <TextView
+            android:id="@+id/new_local_source_car_content_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/d_10"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="@string/new_global_local_source"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/new_local_source_car_content_title"
+            android:layout_marginStart="@dimen/d_10"
+            android:text="@string/new_global_local_source_car"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/s_10" />
+
+        <TextView
+            android:id="@+id/new_local_source_car_content_go_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/d_10"
+            android:background="@drawable/corner_white"
+            android:paddingStart="@dimen/d_10"
+            android:paddingTop="@dimen/d_3"
+            android:paddingEnd="@dimen/d_10"
+            android:paddingBottom="@dimen/d_3"
+            android:text="去查看"
+            android:textColor="@color/standard_blue"
+            android:textSize="@dimen/s_12" />
+
+    </RelativeLayout>
+
+
+    <com.easy.easycan.view.InnerListView
+        android:id="@+id/new_local_source_car_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="@string/chemical_news"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_15" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/home_news_tl_tabs"
+        android:layout_width="match_parent"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorColor="@color/qmui_config_color_blue"
+        android:layout_height="40dp" />
+
+    <com.easy.easycan.view.InnerViewPager
+        android:id="@+id/home_news_vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 </LinearLayout>

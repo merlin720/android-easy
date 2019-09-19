@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.viewpager.widget.ViewPager;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -17,9 +19,12 @@ import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.home.adapter.SubscribeRouteListAdapter;
 import com.easy.easycan.home.bean.SubscribeBean;
+import com.easy.easycan.home.news.adapter.NewsListPageAdapter;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.view.InnerGridView;
 import com.easy.easycan.view.InnerListView;
+import com.easy.easycan.view.InnerViewPager;
+import com.google.android.material.tabs.TabLayout;
 import com.hjq.toast.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.youth.banner.Banner;
@@ -49,16 +54,36 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
             "我要找车", "运单管理", "蒸罐信息", "运力图"
     };
     private List<String> strings;
+
     private String img = CommonUtils.IP + "/static/banner/20190412.png";
 
     private Banner banner;
+    /**
+     * 8个tab
+     */
     private InnerGridView gridView;
-    private LinearLayout mSubscribeRoute;
 
-    private TextView subscribe_route_content_go_sub;
 
+    /**
+     * 订阅路线
+     */
     private InnerListView mSubscribeRouteListView;
+    private LinearLayout mSubscribeRoute;
+    private TextView subscribe_route_content_go_sub;
+    /**
+     * 本地货源
+     */
+    private InnerListView mNewLocalSourceListView;
+    private LinearLayout mNewLocalSourceLl;
+    /**
+     * 本地车源
+     */
+    private InnerListView mNewLocalSourceCarListView;
+    private LinearLayout mNewLocalSourceCarLl;
 
+    private TabLayout mTabLayout;
+
+    private InnerViewPager innerViewPager;
 
     @Override
     protected int getLayoutId() {
@@ -78,8 +103,17 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
         mSubscribeRoute = view.findViewById(R.id.subscribe_route_title_ll);
         subscribe_route_content_go_sub = view.findViewById(R.id.subscribe_route_content_go_sub);
-        mSubscribeRouteListView = view.findViewById(R.id.subscribe_route_list_view);
+        mNewLocalSourceLl = view.findViewById(R.id.new_local_source_ll);
+        mNewLocalSourceCarLl = view.findViewById(R.id.new_local_source_car_ll);
 
+        mSubscribeRouteListView = view.findViewById(R.id.subscribe_route_list_view);
+        mNewLocalSourceListView = view.findViewById(R.id.new_local_source_list_view);
+        mNewLocalSourceCarListView = view.findViewById(R.id.new_local_source_car_list_view);
+
+        mTabLayout = view.findViewById(R.id.home_news_tl_tabs);
+        innerViewPager = view.findViewById(R.id.home_news_vp_content);
+        innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0));
+        mTabLayout.setupWithViewPager(innerViewPager);
     }
 
     /**
@@ -131,9 +165,10 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         subscribeBean.setTo("西安");
         list.add(subscribeBean);
         list.add(subscribeBean);
-        SubscribeRouteListAdapter adapter = new SubscribeRouteListAdapter(getActivity(),R.layout.subscribe_list_item,list);
+        SubscribeRouteListAdapter adapter = new SubscribeRouteListAdapter(getActivity(), R.layout.subscribe_list_item, list);
         mSubscribeRouteListView.setAdapter(adapter);
-
+        mNewLocalSourceListView.setAdapter(adapter);
+        mNewLocalSourceCarListView.setAdapter(adapter);
     }
 
     @Override
@@ -159,6 +194,23 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     @Override
                     public void accept(Object o) throws Exception {
                         ToastUtils.show("去订阅跳转");
+                    }
+                });
+
+        Disposable disposable2 = RxView.clicks(mNewLocalSourceLl)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ToastUtils.show("查看更多新线路资源");
+                    }
+                });
+        Disposable disposable3 = RxView.clicks(mNewLocalSourceCarLl)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ToastUtils.show("查看更多新线路资源");
                     }
                 });
     }
