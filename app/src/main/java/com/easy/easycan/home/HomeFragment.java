@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import com.easy.easycan.home.bean.HomeBannerBean;
 import com.easy.easycan.home.bean.NewsTitleBean;
 import com.easy.easycan.home.news.NewsListActivity;
@@ -27,6 +28,9 @@ import com.easy.easycan.view.InnerViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.hjq.toast.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -88,6 +92,8 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
 
     private HomePresenter presenter;
 
+    private SmartRefreshLayout refreshLayout;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -116,7 +122,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
         news_list_ll = view.findViewById(R.id.news_list_ll);
         mTabLayout = view.findViewById(R.id.home_news_tl_tabs);
         innerViewPager = view.findViewById(R.id.home_news_vp_content);
-
+        refreshLayout = view.findViewById(R.id.refreshLayout);
     }
 
     /**
@@ -204,6 +210,13 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
                         startActivity(new Intent(getActivity(), NewsListActivity.class));
                     }
                 });
+
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                presenter.requestBannerData();
+                presenter.requestNewsTitle();
+            }
+        });
     }
 
     @Override
@@ -227,6 +240,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
     }
 
     @Override public void showBanner(List<HomeBannerBean> model) {
+        refreshLayout.finishRefresh();
         for (HomeBannerBean homeBannerBean : model) {
             if (!homeBannerBean.getImage().contains("http")){
                 homeBannerBean.setImage(CommonUtils.IP+homeBannerBean.getImage());
@@ -239,16 +253,17 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
     }
 
     @Override public void showNewsTitle(List<NewsTitleBean> model) {
+        refreshLayout.finishRefresh();
         innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0,model,true));
         mTabLayout.setupWithViewPager(innerViewPager);
         innerViewPager.setOffscreenPageLimit(3);
     }
 
     @Override public void showNewsList(NewsListBean model) {
-
+        refreshLayout.finishRefresh();
     }
 
     @Override public void requestFaile() {
-
+        refreshLayout.finishRefresh();
     }
 }
