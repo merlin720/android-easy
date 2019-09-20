@@ -20,17 +20,19 @@ import java.util.List;
 public class NewsListPageAdapter extends FragmentPagerAdapter {
   private final static int PAGE_COUNT = 4;
   private List<NewsTitleBean> model;
+  private boolean isHome;
 
-  public NewsListPageAdapter(@NonNull FragmentManager fm, int behavior, List<NewsTitleBean> model) {
+  public NewsListPageAdapter(@NonNull FragmentManager fm, int behavior, List<NewsTitleBean> model,boolean isHome) {
     super(fm, behavior);
     this.model = model;
+    this.isHome = isHome;
   }
 
   @NonNull
   @Override
   public Fragment getItem(int position) {
     return NewsListFragment.newInstance(model.get(position).getCode(),
-        model.get(position).getChannel().getCode());
+        model.get(position).getChannel().getCode(),isHome);
   }
 
   @Override

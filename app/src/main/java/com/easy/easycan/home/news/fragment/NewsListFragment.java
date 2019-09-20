@@ -13,8 +13,10 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
+import com.easy.easycan.home.news.NewsDetailActivity;
 import com.easy.easycan.home.news.adapter.NewsListAdapter;
 import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.network.NetHelper;
@@ -48,9 +50,12 @@ public class NewsListFragment extends QMUIFragment {
   private static final String CATEGORY_CODE = "category_code";
 
   private static final String CHANNEL_CODE = "channel_code";
+  private static final String IS_HOME = "is_home";
 
   private String categoryCode;
   private String mChannelCode;
+
+  private boolean isHome;
 
   private RecyclerView recyclerView;
   private NewsListAdapter adapter;
@@ -59,10 +64,12 @@ public class NewsListFragment extends QMUIFragment {
     return R.layout.fragment_news_list;
   }
 
-  public static NewsListFragment newInstance(String category_code, String channel_code) {
+  public static NewsListFragment newInstance(String category_code, String channel_code,
+      boolean isHome) {
     Bundle args = new Bundle();
     args.putString(CATEGORY_CODE, category_code);
     args.putString(CHANNEL_CODE, channel_code);
+    args.putBoolean(IS_HOME, isHome);
     NewsListFragment fragment = new NewsListFragment();
     fragment.setArguments(args);
     return fragment;
@@ -73,7 +80,7 @@ public class NewsListFragment extends QMUIFragment {
     super.onCreate(savedInstanceState);
     categoryCode = getArguments().getString(CATEGORY_CODE);
     mChannelCode = getArguments().getString(CHANNEL_CODE);
-
+    isHome = getArguments().getBoolean(IS_HOME);
     //
   }
 
@@ -83,6 +90,17 @@ public class NewsListFragment extends QMUIFragment {
     adapter = new NewsListAdapter();
     recyclerView.setAdapter(adapter);
     recyclerView.setNestedScrollingEnabled(false);
+    setListener();
+  }
+
+  private void setListener() {
+
+    adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+      @Override public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        NewsListBean model = (NewsListBean) adapter.getData().get(position);
+        NewsDetailActivity.goActivity(getActivity(), model.getChannel_code(), model.getId());
+      }
+    });
   }
 
   @Override
@@ -93,12 +111,14 @@ public class NewsListFragment extends QMUIFragment {
     return view;
   }
 
-  protected void initData() {
+  private List<NewsListBean> mContentData;
 
+  protected void initData() {
+    String size = isHome ? "5" : "10";
     AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
         .addQueryParameter(CATEGORY_CODE, categoryCode)
         .addQueryParameter(CHANNEL_CODE, mChannelCode)
-        .addQueryParameter("pageSize", "5")
+        .addQueryParameter("pageSize", size)
         .setTag("test")
         .setPriority(Priority.MEDIUM)
         .build()
@@ -117,6 +137,7 @@ public class NewsListFragment extends QMUIFragment {
                 Type type = new TypeToken<List<NewsListBean>>() {
                 }.getType();
                 List<NewsListBean> list = gson.fromJson(item, type);
+
                 adapter.setNewData(list);
               } else {
                 ToastUtils.show(response.getString("message"));

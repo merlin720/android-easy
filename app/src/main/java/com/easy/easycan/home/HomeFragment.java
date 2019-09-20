@@ -239,7 +239,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
     }
 
     @Override public void showNewsTitle(List<NewsTitleBean> model) {
-        innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0,model));
+        innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0,model,true));
         mTabLayout.setupWithViewPager(innerViewPager);
         innerViewPager.setOffscreenPageLimit(3);
     }

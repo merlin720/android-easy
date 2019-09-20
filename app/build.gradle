@@ -96,6 +96,8 @@ dependencies {
 
     implementation dep.brvah
     implementation dep.baseadapter
+    //webview
+    implementation dep.agentweb
     /**kotlin*/
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

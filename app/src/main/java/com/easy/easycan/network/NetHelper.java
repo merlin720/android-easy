@@ -28,7 +28,7 @@ public class NetHelper {
                 .addQueryParameter("limit", "3")
                 .addHeaders("token", "1234")
                 .setTag(TAG)
-                .setPriority(Priority.LOW)
+                .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(listener);
     }

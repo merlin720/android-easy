@@ -14,6 +14,7 @@ import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.home.news.presenter.NewsListPresenter;
 import com.easy.easycan.home.news.view.NewsListView;
 import com.google.android.material.tabs.TabLayout;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class NewsListActivity extends BaseActivity implements NewsListView {
 
   private TabLayout mTabLayout;
   private ViewPager mViewPager;
-  private QMUITopBarLayout mTopBar;
+  private QMUITopBar mTopBar;
 
   private NewsListPresenter presenter;
 
@@ -67,7 +68,7 @@ public class NewsListActivity extends BaseActivity implements NewsListView {
   }
 
   @Override public void showNewsTitle(List<NewsTitleBean> model) {
-    mViewPager.setAdapter(new NewsListPageAdapter(getSupportFragmentManager(), 0, model));
+    mViewPager.setAdapter(new NewsListPageAdapter(getSupportFragmentManager(), 0, model,false));
     mTabLayout.setupWithViewPager(mViewPager);
     mViewPager.setOffscreenPageLimit(3);
   }

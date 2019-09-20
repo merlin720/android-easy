@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
+  android:background="@color/white"
     tools:context=".home.news.NewsListActivity">
 
-    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+    <com.qmuiteam.qmui.widget.QMUITopBar
         android:id="@+id/news_list_title"
         android:layout_width="match_parent"
         app:qmui_topbar_title_color="@color/text_color"

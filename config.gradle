@@ -40,5 +40,6 @@ ext {
                     'banner'                        : 'com.youth.banner:banner:1.4.10',
                     'toast'                         : 'com.hjq:toast:8.0',
                     'baseadapter'                         : 'com.zhy:base-adapter:3.0.3',
+                     "agentweb":'com.just.agentweb:agentweb:4.1.2',
     ]
 }
