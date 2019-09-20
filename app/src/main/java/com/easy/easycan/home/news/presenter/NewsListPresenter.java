@@ -1,15 +1,10 @@
-package com.easy.easycan.home.presenter;
+package com.easy.easycan.home.news.presenter;
 
-import android.widget.Toast;
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.easy.easycan.base.BasePresenter;
-import com.easy.easycan.home.bean.HomeBannerBaseBean;
 import com.easy.easycan.home.bean.NewsTitleBaseBean;
-import com.easy.easycan.home.bean.NewsTitleBean;
-import com.easy.easycan.home.view.HomeView;
+import com.easy.easycan.home.news.view.NewsListView;
 import com.easy.easycan.network.NetHelper;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.util.LogUtils;
@@ -26,43 +21,12 @@ import org.json.JSONObject;
  * @mail zy44638@gmail.com
  * @description
  */
-public class HomePresenter extends BasePresenter {
+public class NewsListPresenter extends BasePresenter {
 
-  private HomeView mHomeView;
+  private NewsListView listView;
 
-  public HomePresenter(HomeView homeView) {
-    this.mHomeView = homeView;
-  }
-
-  /**
-   * 请求banner
-   */
-  public void requestBannerData() {
-    AndroidNetworking.get(CommonUtils.BANNER_URL)
-        .addPathParameter("name", "home")
-        .setTag("test")
-        .setPriority(Priority.MEDIUM)
-        .build()
-        .getAsJSONObject(new JSONObjectRequestListener() {
-          @Override
-          public void onResponse(JSONObject response) {
-
-            try {
-              String data = response.getString("data");
-              Gson gson = new Gson();
-              HomeBannerBaseBean bannerBaseBean = gson.fromJson(data, HomeBannerBaseBean.class);
-              mHomeView.showBanner(bannerBaseBean.getItems());
-            } catch (JSONException e) {
-              e.printStackTrace();
-            }
-          }
-
-          @Override
-          public void onError(ANError error) {
-            LogUtils.e(error.getErrorDetail());
-            mHomeView.requestFaile();
-          }
-        });
+  public NewsListPresenter(NewsListView listView) {
+    this.listView = listView;
   }
 
   public void requestNewsTitle() {
@@ -76,7 +40,7 @@ public class HomePresenter extends BasePresenter {
           if (0 == errorCode) {
             data = response.getString("data");
             NewsTitleBaseBean bean = new Gson().fromJson(data, NewsTitleBaseBean.class);
-            mHomeView.showNewsTitle(bean.getItems());
+            listView.showNewsTitle(bean.getItems());
           } else {
             ToastUtils.show(response.getString("message"));
           }

@@ -43,88 +43,93 @@ import java.util.List;
  * @description
  */
 public class NewsListFragment extends QMUIFragment {
-    private static final String ARG_TIMELINE_TYPE = "ARG_TIMELINE_TYPE";
+  private static final String ARG_TIMELINE_TYPE = "ARG_TIMELINE_TYPE";
 
-    private int mType;
+  private static final String CATEGORY_CODE = "category_code";
 
-    private RecyclerView recyclerView;
-    private NewsListAdapter adapter;
+  private static final String CHANNEL_CODE = "channel_code";
 
+  private String categoryCode;
+  private String mChannelCode;
 
-    protected void initView(View view) {
-        recyclerView = view.findViewById(R.id.news_list_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new NewsListAdapter();
-        recyclerView.setAdapter(adapter);
-        recyclerView.setNestedScrollingEnabled(false);
-    }
+  private RecyclerView recyclerView;
+  private NewsListAdapter adapter;
 
-    @Override
-    protected View onCreateView() {
-        View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(),null);
-        initView(view);
-        initData();
-        return view;
-    }
+  protected int getLayoutId() {
+    return R.layout.fragment_news_list;
+  }
 
+  public static NewsListFragment newInstance(String category_code, String channel_code) {
+    Bundle args = new Bundle();
+    args.putString(CATEGORY_CODE, category_code);
+    args.putString(CHANNEL_CODE, channel_code);
+    NewsListFragment fragment = new NewsListFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
 
-    protected void initData() {
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    categoryCode = getArguments().getString(CATEGORY_CODE);
+    mChannelCode = getArguments().getString(CHANNEL_CODE);
 
-        AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
-                .addQueryParameter("category_code", "wuliu")
-                .addQueryParameter("channel_code", "zixun")
-                .addQueryParameter("limit", "5")
-                .setTag("test")
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        String data = null;
-                        try {
-                            data = response.getString("data");
-                            JSONObject jsonObject = new JSONObject(data);
-                            String item =  jsonObject.getString("items");
+    //
+  }
 
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<List<NewsListBean>>(){}.getType();
-                            List<NewsListBean> list = gson.fromJson(item,type);
+  protected void initView(View view) {
+    recyclerView = view.findViewById(R.id.news_list_recycler_view);
+    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    adapter = new NewsListAdapter();
+    recyclerView.setAdapter(adapter);
+    recyclerView.setNestedScrollingEnabled(false);
+  }
 
-                            adapter.setNewData(list);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+  @Override
+  protected View onCreateView() {
+    View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(), null);
+    initView(view);
+    initData();
+    return view;
+  }
 
-                    }
+  protected void initData() {
 
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
-                    }
-                });
-    }
+    AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
+        .addQueryParameter(CATEGORY_CODE, categoryCode)
+        .addQueryParameter(CHANNEL_CODE, mChannelCode)
+        .addQueryParameter("pageSize", "5")
+        .setTag("test")
+        .setPriority(Priority.MEDIUM)
+        .build()
+        .getAsJSONObject(new JSONObjectRequestListener() {
+          @Override
+          public void onResponse(JSONObject response) {
+            String data = null;
+            try {
+              int errorCode = response.getInt("code");
+              if (0 == errorCode) {
+                data = response.getString("data");
+                JSONObject jsonObject = new JSONObject(data);
+                String item = jsonObject.getString("items");
 
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<NewsListBean>>() {
+                }.getType();
+                List<NewsListBean> list = gson.fromJson(item, type);
+                adapter.setNewData(list);
+              } else {
+                ToastUtils.show(response.getString("message"));
+              }
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+          }
 
-    protected int getLayoutId() {
-        return R.layout.fragment_news_list;
-    }
-
-    public static NewsListFragment newInstance(int type) {
-        Bundle args = new Bundle();
-        args.putInt(ARG_TIMELINE_TYPE, type);
-        NewsListFragment fragment = new NewsListFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mType = getArguments().getInt(ARG_TIMELINE_TYPE);
-
-
-//
-    }
-
-
+          @Override
+          public void onError(ANError error) {
+            // handle error
+          }
+        });
+  }
 }

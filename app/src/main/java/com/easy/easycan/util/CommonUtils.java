@@ -17,6 +17,8 @@ public class CommonUtils {
     public static final String IP = "http://www.huagongwuliu.com";
     //banner
     public static final String BANNER_URL = IP + "/api/system-banner/index";
+
+    public static final String NEWS_TITLE = IP + "/api/news/categories";
         //新闻列表
     public static final String HOME_NEWS_LIST = IP + "/api/news/index";
 

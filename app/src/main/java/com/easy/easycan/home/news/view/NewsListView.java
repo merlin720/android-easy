@@ -1,7 +1,6 @@
-package com.easy.easycan.home.view;
+package com.easy.easycan.home.news.view;
 
 import com.easy.easycan.base.BaseView;
-import com.easy.easycan.home.bean.HomeBannerBean;
 import com.easy.easycan.home.bean.NewsTitleBean;
 import com.easy.easycan.home.news.bean.NewsListBean;
 import java.util.List;
@@ -12,11 +11,7 @@ import java.util.List;
  * @mail zy44638@gmail.com
  * @description
  */
-public interface HomeView extends BaseView {
-  /**
-   * 显示banner
-   */
-  void showBanner(List<HomeBannerBean> model);
+public interface NewsListView extends BaseView {
 
   /**
    * 新闻title
@@ -24,9 +19,4 @@ public interface HomeView extends BaseView {
   void showNewsTitle(List<NewsTitleBean> model);
 
   void showNewsList(NewsListBean model);
-
-  /**
-   * 请求失败
-   */
-  void requestFaile();
 }

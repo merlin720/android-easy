@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.easy.easycan.home.bean.NewsTitleBean;
 import com.easy.easycan.home.news.fragment.NewsListFragment;
 import com.easy.easycan.util.CommonUtils;
+import java.util.List;
 
 /**
  * @auther mac
@@ -16,56 +18,29 @@ import com.easy.easycan.util.CommonUtils;
  * @description
  */
 public class NewsListPageAdapter extends FragmentPagerAdapter {
-    private final static int PAGE_COUNT = 4;
+  private final static int PAGE_COUNT = 4;
+  private List<NewsTitleBean> model;
 
-    public NewsListPageAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
-    }
+  public NewsListPageAdapter(@NonNull FragmentManager fm, int behavior, List<NewsTitleBean> model) {
+    super(fm, behavior);
+    this.model = model;
+  }
 
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-        int type;
-        switch (position) {
-            case 0:
-                type = CommonUtils.TYPE_TIMELINE_PUBLIC;
-                break;
-            case 1:
-                type = CommonUtils.TYPE_TIMELINE_FRIEND;
-                break;
-            case 2:
-                type = CommonUtils.TYPE_TIMELINE_MINE;
-                break;
-            case 3:
-                type = CommonUtils.TYPE_Logistics_News;
-                break;
-            default:
-                type = 0;
-                break;
-        }
-        return NewsListFragment.newInstance(type);
-    }
+  @NonNull
+  @Override
+  public Fragment getItem(int position) {
+    return NewsListFragment.newInstance(model.get(position).getCode(),
+        model.get(position).getChannel().getCode());
+  }
 
-    @Override
-    public int getCount() {
-        return PAGE_COUNT;
-    }
+  @Override
+  public int getCount() {
+    return model == null ? 0 : model.size();
+  }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "政策法规";
-            case 1:
-                return "安全知识";
-            case 2:
-                return "化工资讯";
-            case 3:
-                return "物流新闻";
-            default:
-                return "微博";
-
-        }
-    }
+  @Nullable
+  @Override
+  public CharSequence getPageTitle(int position) {
+    return model.get(position).getName();
+  }
 }

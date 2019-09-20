@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easy.easycan.home.bean.HomeBannerBean;
-import com.easy.easycan.home.bean.HomeNewsTitle;
+import com.easy.easycan.home.bean.NewsTitleBean;
 import com.easy.easycan.home.news.NewsListActivity;
 import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.home.presenter.HomePresenter;
@@ -116,9 +116,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
         news_list_ll = view.findViewById(R.id.news_list_ll);
         mTabLayout = view.findViewById(R.id.home_news_tl_tabs);
         innerViewPager = view.findViewById(R.id.home_news_vp_content);
-        innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0));
-        mTabLayout.setupWithViewPager(innerViewPager);
-        innerViewPager.setOffscreenPageLimit(3);
+
     }
 
     /**
@@ -140,6 +138,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
     protected void initData() {
         presenter = new HomePresenter(this);
         presenter.requestBannerData();
+        presenter.requestNewsTitle();
         imgs = new ArrayList<>();
         bannerTitles = new ArrayList<>();
 
@@ -239,8 +238,10 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
             .start();
     }
 
-    @Override public void showNewsTitle(HomeNewsTitle model) {
-
+    @Override public void showNewsTitle(List<NewsTitleBean> model) {
+        innerViewPager.setAdapter(new NewsListPageAdapter(getChildFragmentManager(), 0,model));
+        mTabLayout.setupWithViewPager(innerViewPager);
+        innerViewPager.setOffscreenPageLimit(3);
     }
 
     @Override public void showNewsList(NewsListBean model) {
