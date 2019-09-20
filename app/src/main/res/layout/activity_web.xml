@@ -10,26 +10,12 @@
     tools:context=".base.BaseWebActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        app:theme="@style/toolBar"
-        app:titleTextColor="@android:color/white">
-
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"/>
-    </androidx.appcompat.widget.Toolbar>
-
+    <com.qmuiteam.qmui.widget.QMUITopBar
+      android:id="@+id/web_common_title"
+      android:layout_width="match_parent"
+      app:qmui_topbar_title_color="@color/text_color"
+      app:qmui_topbar_left_back_drawable_id="@drawable/left_arrow"
+      android:layout_height="wrap_content" />
     
 
 </LinearLayout>

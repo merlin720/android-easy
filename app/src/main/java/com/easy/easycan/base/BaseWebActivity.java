@@ -3,25 +3,22 @@ package com.easy.easycan.base;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import com.easy.easycan.R;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 import com.qmuiteam.qmui.arch.QMUIActivity;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 
 /**
  * Created by cenxiaozhong on 2017/5/26.
@@ -30,12 +27,11 @@ import com.qmuiteam.qmui.arch.QMUIActivity;
  */
 
 public class BaseWebActivity extends QMUIActivity {
-
+    private QMUITopBar mTopBar;
 
     protected AgentWeb mAgentWeb;
     private LinearLayout mLinearLayout;
-    private Toolbar mToolbar;
-    private TextView mTitleTextView;
+
     private AlertDialog mAlertDialog;
 
 
@@ -47,22 +43,7 @@ public class BaseWebActivity extends QMUIActivity {
 
 
         mLinearLayout = (LinearLayout) this.findViewById(R.id.container);
-        mToolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        mToolbar.setTitleTextColor(Color.BLACK);
-        mToolbar.setTitle("易罐");
-        mTitleTextView = (TextView) this.findViewById(R.id.toolbar_title);
-        this.setSupportActionBar(mToolbar);
-        if (getSupportActionBar() != null) {
-            // Enable the Up button
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                showDialog();
-            }
-        });
 
 
         long p = System.currentTimeMillis();
@@ -86,9 +67,25 @@ public class BaseWebActivity extends QMUIActivity {
         long n = System.currentTimeMillis();
         Log.i("Info", "init used time:" + (n - p));
 
+        initTopBar();
+    }
+    private void initTopBar() {
+        mTopBar = findViewById(R.id.web_common_title);
+        mTopBar.addRightImageButton(R.drawable.fenxiang, R.id.topbar_right_about_button)
+            .setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View view) {
+                    mAgentWeb.getUrlLoader().reload(); // 刷新
+                }
+            });
+        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+
 
     }
-
     private com.just.agentweb.WebViewClient mWebViewClient = new WebViewClient() {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -105,9 +102,7 @@ public class BaseWebActivity extends QMUIActivity {
         @Override
         public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
-            if (mTitleTextView != null) {
-                mTitleTextView.setText(title);
-            }
+            mTopBar.setTitle(title);
         }
     };
 
