@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".home.news.NewsListActivity">
 
-    <com.qmuiteam.qmui.widget.QMUITopBar
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/news_list_title"
         android:layout_width="match_parent"
         app:qmui_topbar_title_color="@color/text_color"

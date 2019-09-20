@@ -7,11 +7,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.easy.easycan.home.bean.HomeBannerBean;
+import com.easy.easycan.home.bean.HomeNewsTitle;
 import com.easy.easycan.home.news.NewsListActivity;
+import com.easy.easycan.home.news.bean.NewsListBean;
+import com.easy.easycan.home.presenter.HomePresenter;
+import com.easy.easycan.home.view.HomeView;
 import com.easy.easycan.util.GlideImageLoader;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
@@ -31,8 +32,6 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -46,13 +45,14 @@ import io.reactivex.functions.Consumer;
  * @mail zy44638@gmail.com
  * @description 首页
  */
-public class HomeFragment extends BaseFragment implements OnBannerListener {
+public class HomeFragment extends BaseFragment implements OnBannerListener, HomeView {
 
     private String[] titles = {
             "我要找货", "精品货源", "运费计算", "易冠宝",
             "我要找车", "运单管理", "蒸罐信息", "运力图"
     };
-    private List<String> strings;
+    private List<String> imgs;
+    private List<String> bannerTitles;
 
     private String img = CommonUtils.IP + "/static/banner/20190412.png";
 
@@ -85,6 +85,8 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     private TabLayout mTabLayout;
 
     private InnerViewPager innerViewPager;
+
+    private HomePresenter presenter;
 
     @Override
     protected int getLayoutId() {
@@ -136,31 +138,10 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
     @Override
     protected void initData() {
-        strings = new ArrayList<>();
-        strings.add(img);
-        strings.add(img);
-        strings.add(img);
-        strings.add(img);
-        strings.add(img);
-
-        AndroidNetworking.get(CommonUtils.BANNER_URL)
-                .addPathParameter("name", "home")
-                .setTag("test")
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        banner.setImages(strings)
-                                .start();
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        Toast.makeText(getActivity(), "banner 获取失败", Toast.LENGTH_LONG).show();
-                    }
-                });
-
+        presenter = new HomePresenter(this);
+        presenter.requestBannerData();
+        imgs = new ArrayList<>();
+        bannerTitles = new ArrayList<>();
 
         List<SubscribeBean> list = new ArrayList<>();
         SubscribeBean subscribeBean = new SubscribeBean();
@@ -246,4 +227,27 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         banner.stopAutoPlay();
     }
 
+    @Override public void showBanner(List<HomeBannerBean> model) {
+        for (HomeBannerBean homeBannerBean : model) {
+            if (!homeBannerBean.getImage().contains("http")){
+                homeBannerBean.setImage(CommonUtils.IP+homeBannerBean.getImage());
+            }
+            imgs.add(homeBannerBean.getImage());
+            bannerTitles.add(homeBannerBean.getDescription());
+        }
+        banner.setImages(imgs)
+            .start();
+    }
+
+    @Override public void showNewsTitle(HomeNewsTitle model) {
+
+    }
+
+    @Override public void showNewsList(NewsListBean model) {
+
+    }
+
+    @Override public void requestFaile() {
+
+    }
 }

@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.easy.easycan.MainActivity;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.goods.ExcellentGoodsFragment;
@@ -23,12 +24,13 @@ import com.easy.easycan.trade.TradeFloorFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 
 public class NewsListActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private QMUITopBar mTopBar;
+    private QMUITopBarLayout mTopBar;
 
     @Override
     protected int setLayoutId() {
@@ -42,7 +44,7 @@ public class NewsListActivity extends BaseActivity {
         mViewPager.setAdapter(new NewsListPageAdapter(getSupportFragmentManager(), 0));
         mTabLayout.setupWithViewPager(mViewPager);
 
-        QMUIStatusBarHelper.translucent(this);
+
         initTopBar();
 
     }
@@ -53,11 +55,11 @@ public class NewsListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.slide_still, R.anim.slide_out_right);
+
             }
         });
 
-        mTopBar.setTitle("新闻列表");
+        mTopBar.setTitle("化工新闻");
     }
 
 

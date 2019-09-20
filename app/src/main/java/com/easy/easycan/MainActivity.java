@@ -2,7 +2,6 @@ package com.easy.easycan;
 
 import android.os.Bundle;
 import android.util.SparseArray;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.IdRes;
