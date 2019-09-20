@@ -3,44 +3,27 @@ package com.easy.easycan.home.news.fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easy.easycan.R;
-import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.news.NewsDetailActivity;
 import com.easy.easycan.home.news.adapter.NewsListAdapter;
 import com.easy.easycan.home.news.bean.NewsListBean;
-import com.easy.easycan.network.NetHelper;
-import com.easy.easycan.network.NetworkUtils;
 import com.easy.easycan.util.CommonUtils;
-import com.easy.easycan.util.LogUtils;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.hjq.toast.ToastUtils;
 import com.qmuiteam.qmui.arch.QMUIFragment;
-
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-import org.json.JSONArray;
+import java.lang.reflect.Type;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author mac
@@ -48,7 +31,7 @@ import java.util.List;
  * @mail zy44638@gmail.com
  * @description
  */
-public class NewsListFragment extends QMUIFragment {
+public class HomeNewsListFragment extends QMUIFragment {
   private static final String ARG_TIMELINE_TYPE = "ARG_TIMELINE_TYPE";
 
   private static final String CATEGORY_CODE = "category_code";
@@ -61,24 +44,20 @@ public class NewsListFragment extends QMUIFragment {
 
   private boolean isHome;
 
-  private int index;
-
   private RecyclerView recyclerView;
   private NewsListAdapter adapter;
 
-  private SmartRefreshLayout refreshLayout;
-
   protected int getLayoutId() {
-    return R.layout.fragment_news_list;
+    return R.layout.fragment_home_news_list;
   }
 
-  public static NewsListFragment newInstance(String category_code, String channel_code,
+  public static HomeNewsListFragment newInstance(String category_code, String channel_code,
       boolean isHome) {
     Bundle args = new Bundle();
     args.putString(CATEGORY_CODE, category_code);
     args.putString(CHANNEL_CODE, channel_code);
     args.putBoolean(IS_HOME, isHome);
-    NewsListFragment fragment = new NewsListFragment();
+    HomeNewsListFragment fragment = new HomeNewsListFragment();
     fragment.setArguments(args);
     return fragment;
   }
@@ -98,7 +77,6 @@ public class NewsListFragment extends QMUIFragment {
     adapter = new NewsListAdapter();
     recyclerView.setAdapter(adapter);
     recyclerView.setNestedScrollingEnabled(false);
-    refreshLayout = view.findViewById(R.id.refreshLayout);
     setListener();
   }
 
@@ -110,44 +88,30 @@ public class NewsListFragment extends QMUIFragment {
         NewsDetailActivity.goActivity(getActivity(), model.getChannel_code(), model.getId());
       }
     });
-    refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-      @Override public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        index++;
-        initData(index);
-      }
-
-      @Override public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        index = 1;
-        initData(index);
-      }
-    });
   }
 
   @Override
   protected View onCreateView() {
     View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(), null);
     initView(view);
-    index = 1;
-    initData(index);
+    initData();
     return view;
   }
 
+  private List<NewsListBean> mContentData;
 
-  protected void initData(int index) {
+  protected void initData() {
     String size = isHome ? "5" : "10";
     AndroidNetworking.get(CommonUtils.HOME_NEWS_LIST)
         .addQueryParameter(CATEGORY_CODE, categoryCode)
         .addQueryParameter(CHANNEL_CODE, mChannelCode)
         .addQueryParameter("pageSize", size)
-        .addQueryParameter("page", String.valueOf(index))
         .setTag("test")
         .setPriority(Priority.MEDIUM)
         .build()
         .getAsJSONObject(new JSONObjectRequestListener() {
           @Override
           public void onResponse(JSONObject response) {
-            refreshLayout.finishLoadMore();
-            refreshLayout.finishRefresh();
             String data = null;
             try {
               int errorCode = response.getInt("code");
@@ -160,11 +124,8 @@ public class NewsListFragment extends QMUIFragment {
                 Type type = new TypeToken<List<NewsListBean>>() {
                 }.getType();
                 List<NewsListBean> list = gson.fromJson(item, type);
-                if (index == 1) {
-                  adapter.setNewData(list);
-                } else {
-                  adapter.addData(list);
-                }
+
+                adapter.setNewData(list);
               } else {
                 ToastUtils.show(response.getString("message"));
               }
@@ -176,8 +137,6 @@ public class NewsListFragment extends QMUIFragment {
           @Override
           public void onError(ANError error) {
             // handle error
-            refreshLayout.finishLoadMore();
-            refreshLayout.finishRefresh();
           }
         });
   }

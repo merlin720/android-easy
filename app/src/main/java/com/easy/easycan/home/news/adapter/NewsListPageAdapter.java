@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.easy.easycan.home.bean.NewsTitleBean;
+import com.easy.easycan.home.news.fragment.HomeNewsListFragment;
 import com.easy.easycan.home.news.fragment.NewsListFragment;
 import com.easy.easycan.util.CommonUtils;
 import java.util.List;
@@ -31,6 +32,9 @@ public class NewsListPageAdapter extends FragmentPagerAdapter {
   @NonNull
   @Override
   public Fragment getItem(int position) {
+    if (isHome)
+      return HomeNewsListFragment.newInstance(model.get(position).getCode(),
+          model.get(position).getChannel().getCode(),isHome);
     return NewsListFragment.newInstance(model.get(position).getCode(),
         model.get(position).getChannel().getCode(),isHome);
   }
