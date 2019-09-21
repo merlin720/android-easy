@@ -91,9 +91,7 @@ public class MainActivity extends BaseActivity {
                 if (fragments != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.home_container, mFragment).commit();
                 }
-
             }
-
         });
 
     }

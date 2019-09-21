@@ -9,7 +9,7 @@ import com.easy.easycan.base.BaseFragment;
  * @author merlin720
  * @date 2019-09-16
  * @mail zy44638@gmail.com
- * @description 发布
+ * @description 交易大厅
  */
 public class TradeFloorFragment extends BaseFragment {
   @Override
