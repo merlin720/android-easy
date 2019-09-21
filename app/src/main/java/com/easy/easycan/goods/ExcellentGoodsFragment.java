@@ -10,6 +10,7 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
+import com.easy.easycan.goods.model.ExcellentGoodsListBean;
 import com.easy.easycan.goods.model.JsonBean;
 import com.easy.easycan.goods.view.ExcellentGoodsListAdapter;
 import com.easy.easycan.util.GetJsonDataUtil;
@@ -74,6 +75,11 @@ public class ExcellentGoodsFragment extends BaseFragment {
     mRecyclerView.setLayoutManager(manager);
     adapter = new ExcellentGoodsListAdapter();
     mRecyclerView.setAdapter(adapter);
+    List<ExcellentGoodsListBean> listBeans = new ArrayList<>();
+    for (int i = 0; i < 15; i++) {
+      listBeans.add(new ExcellentGoodsListBean());
+    }
+    adapter.setNewData(listBeans);
   }
 
   @Override protected void initData() {

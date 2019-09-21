@@ -1,7 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_height="wrap_content"
+
   android:orientation="vertical">
 
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_10"
+    android:layout_marginEnd="@dimen/d_10"
+    android:layout_marginTop="@dimen/d_10"
+    android:background="@drawable/excellent_goods_item_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_30"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="山东华鲁恒升化工"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_12" />
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/d_30"
+        android:layout_weight="1"
+        android:gravity="center_vertical">
+
+        <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_marginLeft="@dimen/d_5"
+          android:src="@drawable/v" />
+
+        <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_marginLeft="@dimen/d_5"
+          android:src="@drawable/exc_goods_item_yu" />
+
+        <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_marginLeft="@dimen/d_5"
+          android:src="@drawable/exc_goods_item_xian" />
+
+        <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_marginLeft="@dimen/d_5"
+          android:src="@drawable/exc_goods_item_zi" />
+
+        <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_marginLeft="@dimen/d_5"
+          android:src="@drawable/exc_goods_item_dian" />
+      </LinearLayout>
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/d_10"
+        android:text="1小时前"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_12" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_20"
+      android:layout_marginEnd="@dimen/d_20"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="80dp">
+
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/d_15"
+        android:src="@drawable/excele_goods_item_j" />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/d_20"
+        android:orientation="vertical">
+
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/exc_goods_item_green" />
+
+        <View
+          android:layout_width="1dp"
+          android:layout_height="@dimen/d_15"
+          android:layout_gravity="center_horizontal"
+          android:background="@color/grey_color" />
+
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/exc_goods_item_red" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginEnd="@dimen/d_10"
+          android:text="内蒙古  鄂尔多斯"
+          android:textColor="@color/text_color"
+          android:textSize="@dimen/s_14" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginTop="@dimen/d_10"
+          android:layout_marginEnd="@dimen/d_10"
+          android:text="江苏  连云港"
+          android:textColor="@color/text_color"
+          android:textSize="@dimen/s_14" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/d_10"
+        android:orientation="vertical">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:gravity="end"
+          android:text="竞价截止"
+          android:textColor="@color/tips_color"
+          android:textSize="@dimen/s_10" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+
+          android:text="还有1天23小时17分"
+          android:textColor="@color/tips_color"
+          android:textSize="@dimen/s_16" />
+      </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:text="甲醇|不锈钢保温 | 100吨 | 带票 | 见榜单/发票结款 | 约325km"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_12" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_40"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="已有17位车主已报价"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_12" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_blue"
+        android:drawableStart="@drawable/exc_goods_item_contact"
+        android:paddingStart="@dimen/d_10"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/d_10"
+        android:paddingBottom="@dimen/dp_4"
+        android:text="联系"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:background="@drawable/corner_red"
+        android:drawableStart="@drawable/exc_goods_item_offer"
+        android:paddingStart="@dimen/d_10"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/d_10"
+        android:paddingBottom="@dimen/dp_4"
+        android:text="联系"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+  </LinearLayout>
 </LinearLayout>
