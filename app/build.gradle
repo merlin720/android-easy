@@ -88,8 +88,8 @@ dependencies {
     implementation rootProject.ext.dependencies["okhttp3"]
     implementation rootProject.ext.dependencies["rxandroid"]
     implementation dep.rxbinding2
-    implementation dep.qmui
-    implementation dep.qmuiarch
+    implementation project(':qmui')
+    api dep.qmuiarch
     implementation dep.multidex
     implementation dep.banner
     implementation dep.toast
@@ -98,6 +98,8 @@ dependencies {
     implementation dep.baseadapter
     //webview
     implementation dep.agentweb
+    /*时间选择*/
+    implementation dep.picker_view
     /**kotlin*/
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

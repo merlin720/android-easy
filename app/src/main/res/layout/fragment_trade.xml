@@ -13,7 +13,7 @@
     android:background="?attr/app_content_bg_color"
     android:fitsSystemWindows="true" />
 
-  <com.qmuiteam.qmui.widget.tab.QMUITabSegment
+  <com.qmuiteam.qmui.widget.QMUITabSegment
     android:id="@+id/tabs"
     android:layout_width="match_parent"
     android:layout_height="@dimen/home_tab_height"

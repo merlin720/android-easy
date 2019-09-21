@@ -10,8 +10,9 @@
       <module fileurl="file://$PROJECT_DIR$/code-android-app-easycan.iml" filepath="$PROJECT_DIR$/code-android-app-easycan.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycan/code-android-app-easycan-easycan.iml" filepath="$PROJECT_DIR$/easycan/code-android-app-easycan-easycan.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycan.iml" filepath="$PROJECT_DIR$/easycan.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easycan/easycan-code-android-app-easycan-easycan.iml" filepath="$PROJECT_DIR$/easycan/easycan-code-android-app-easycan-easycan.iml" />
       <module fileurl="file://$PROJECT_DIR$/easycan/easycan-easycan.iml" filepath="$PROJECT_DIR$/easycan/easycan-easycan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lintrule/lintrule.iml" filepath="$PROJECT_DIR$/lintrule/lintrule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmui/qmui.iml" filepath="$PROJECT_DIR$/qmui/qmui.iml" />
     </modules>
   </component>
 </project>

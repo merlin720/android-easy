@@ -7,6 +7,8 @@
   <dimen name="d_50">50dp</dimen>
   <dimen name="d_48">48dp</dimen>
   <dimen name="d_40">40dp</dimen>
+  <dimen name="d_30">30dp</dimen>
+  <dimen name="d_25">25dp</dimen>
   <dimen name="d_20">20dp</dimen>
   <dimen name="d_15">15dp</dimen>
   <dimen name="d_12">12dp</dimen>
