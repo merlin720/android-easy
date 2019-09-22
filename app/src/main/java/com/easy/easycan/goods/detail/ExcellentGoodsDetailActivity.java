@@ -8,10 +8,16 @@ import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +30,7 @@ import com.easy.easycan.goods.detail.view.ExceellentGoodsDetailView;
 import com.easy.easycan.goods.detail.view.ExcellentGoodsDetailAdapter;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.util.LogUtils;
+import com.easy.easycan.util.SizeUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import io.reactivex.functions.Consumer;
@@ -143,5 +150,37 @@ public class ExcellentGoodsDetailActivity extends BaseActivity implements
       list.add(new ExcellentGoodsDetailBean());
     }
     adapter.setNewData(list);
+  }
+
+  private AlertDialog alertDialog;
+
+  /**
+   * 抢单
+   * @param str
+   */
+  private void createDialog(String str) {
+    View mLmCountView = LayoutInflater.from(this).inflate(R.layout.qmui_dialog_layout, null);
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Dialog_Fullscreen);
+    builder.setCancelable(true);
+    builder.setView(mLmCountView);
+    alertDialog = builder.create();
+
+    if (null != alertDialog && !alertDialog.isShowing()) {
+      alertDialog.show();
+      Window window = alertDialog.getWindow();
+      window.setDimAmount(0.4f);
+      window.setGravity(Gravity.CENTER);
+      WindowManager.LayoutParams lp = window.getAttributes();
+      lp.width = SizeUtils.getDisplayWidth(this);
+      lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+      window.setAttributes(lp);
+    }
+  }
+
+  public void hideDialog() {
+    if (null != alertDialog && alertDialog.isShowing()) {
+      alertDialog.dismiss();
+    }
   }
 }

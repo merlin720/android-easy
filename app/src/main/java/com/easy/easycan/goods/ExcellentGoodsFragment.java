@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.listener.OnDismissListener;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -298,7 +299,27 @@ public class ExcellentGoodsFragment extends BaseFragment {
             .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
             .setContentTextSize(20)
             .build();
-
+    /**
+     * 取消时改变状态
+     */
+    pvOptions.setOnDismissListener(new OnDismissListener() {
+      @Override public void onDismiss(Object o) {
+        switch (type) {
+          case 1:
+            changeDepartureStatus();
+            break;
+          case 2:
+            changeDestinationStatus();
+            break;
+          case 3:
+            changeFiltrateStatus();
+            break;
+          case 4:
+            changeTimeStatus();
+            break;
+        }
+      }
+    });
     //pvOptions.setPicker(options1Items, options2Items);//二级选择器
     if (type == 1 || type == 2) {
       pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
