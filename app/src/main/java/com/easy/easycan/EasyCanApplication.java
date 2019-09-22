@@ -5,11 +5,11 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 import com.androidnetworking.AndroidNetworking;
+import com.blankj.utilcode.util.Utils;
 import com.easy.easycan.network.HttpLoggingInterceptor;
 import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.util.HttpLogInterceptor;
 import com.easy.easycan.util.LogUtils;
-import com.easy.easycan.util.Utils;
 import com.hjq.toast.ToastUtils;
 import com.jacksonandroidnetworking.JacksonParserFactory;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
@@ -59,13 +59,13 @@ public class EasyCanApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         Utils.init(this);
         initLog();//log 初始化
         initNetwork();
         MultiDex.install(this) ;
         QMUISwipeBackActivityManager.init(this);
         ToastUtils.init(this);
+
     }
 
     /**

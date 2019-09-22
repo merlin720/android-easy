@@ -17,6 +17,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.goods.ExcellentGoodsFragment;
 import com.easy.easycan.home.HomeFragment;
@@ -88,12 +89,14 @@ public class MainActivity extends BaseActivity {
     /**
      * 判断是否需要检测，防止不停的弹框
      */
-    private boolean isNeedCheck = true;
+    private boolean isNeedCheck ;
     @Override protected void onResume() {
         super.onResume();
+        isNeedCheck = SPUtils.getInstance().getBoolean("isNeedCheck");
         if (Build.VERSION.SDK_INT >= 23) {
-            if (isNeedCheck) {
+            if (!isNeedCheck) {
                 checkPermissions(needPermissions);
+
             }
         }
     }
@@ -198,7 +201,7 @@ public class MainActivity extends BaseActivity {
                 if (requestCode == PERMISSON_REQUESTCODE) {
                     if (!verifyPermissions(paramArrayOfInt)) {
                         showMissingPermissionDialog();
-                        isNeedCheck = false;
+                        SPUtils.getInstance().put("isNeedCheck", true);
                     }
                 }
             }

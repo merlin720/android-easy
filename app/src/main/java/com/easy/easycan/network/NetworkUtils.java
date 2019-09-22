@@ -11,8 +11,9 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.blankj.utilcode.util.Utils;
 import com.easy.easycan.util.ShellUtils;
-import com.easy.easycan.util.Utils;
+
 
 import java.lang.reflect.Method;
 import java.net.InetAddress;
