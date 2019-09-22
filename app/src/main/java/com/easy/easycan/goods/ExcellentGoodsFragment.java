@@ -276,19 +276,19 @@ public class ExcellentGoodsFragment extends BaseFragment {
             switch (type) {
               case 1:
                 mDepartureTv.setText(opt3tx);
-                changeDepartureStatus();
+                //changeDepartureStatus();
                 break;
               case 2:
                 mDestinationTv.setText(opt3tx);
-                changeDestinationStatus();
+                //changeDestinationStatus();
                 break;
               case 3:
                 mFiltrateTv.setText(mFiltrateData.get(options1));
-                changeFiltrateStatus();
+                //changeFiltrateStatus();
                 break;
               case 4:
                 mTimeTv.setText(mTimeData.get(options1));
-                changeTimeStatus();
+                //changeTimeStatus();
                 break;
             }
           }
