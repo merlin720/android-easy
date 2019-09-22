@@ -132,4 +132,11 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+
+    <style name="starRatingBar_mini" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_record_star</item>
+        <item name="android:minHeight">13dip</item>
+        <item name="android:maxWidth">13dip</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

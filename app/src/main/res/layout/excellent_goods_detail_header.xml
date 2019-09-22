@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#e1e1e1"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_30"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@android:color/white">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:layout_marginStart="@dimen/d_10"
+      android:text="货源编号："
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_12" />
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_weight="1"
+      android:text="HY2019070812561478"
+      android:textColor="@color/text_color"
+      android:textSize="@dimen/s_12" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_vertical"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:text="2020-01-01"
+      android:textColor="@color/text_color"
+      android:textSize="@dimen/s_12" />
+  </LinearLayout>
+
+  <!--起始地-->
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@color/standard_blue"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_20">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+        android:drawableStart="@drawable/white_location_icon"
+        android:drawablePadding="@dimen/d_10"
+        android:text="山东 德州 天衢园"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+
+        android:text="235.25km"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/d_5"
+      android:layout_marginBottom="@dimen/d_10">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+        android:drawableStart="@drawable/white_location_icon"
+        android:drawablePadding="@dimen/d_10"
+        android:text="内蒙古 鄂尔多斯 胜金"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+
+      <TextView
+        android:id="@+id/exc_goods_detail_header_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/back_icon_white_right"
+        android:text="查看地图"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+    </LinearLayout>
+  </LinearLayout>
+  <!--货物介绍-->
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@color/app_color_theme_7">
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_marginBottom="@dimen/d_10"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="货物名称"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="甲醇"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_marginBottom="@dimen/d_10"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="货物类型"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="三类"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_marginBottom="@dimen/d_10"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="货物重量"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="300吨"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/s_15" />
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_50"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@color/text_color">
+
+    <TextView
+      android:id="@+id/exc_goods_detail_header_remaining"
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="2"
+      android:gravity="center"
+      android:text="仅剩：120吨"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/s_12" />
+
+    <TextView
+      android:id="@+id/exc_goods_detail_header_remaining_time"
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="3"
+      android:gravity="center"
+      android:text="竞价截止：1天23小时17分"
+      android:textColor="@android:color/white" />
+  </LinearLayout>
+  <!--tips-->
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="罐体要求"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:text="不锈钢保温"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="是否发票"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:text="是"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="结款方式"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:text="卸车结款"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="装车时间"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:text="2019-07-08"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:layout_marginBottom="@dimen/d_5">
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:layout_weight="1"
+        android:text="备注"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginBottom="@dimen/d_10"
+        android:text="卸车结款"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+  </LinearLayout>
+  <!--公司-->
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:layout_marginTop="@dimen/d_10"
+    android:background="@android:color/white">
+
+    <ImageView
+      android:id="@+id/exc_goods_detail_company_header"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_centerVertical="true"
+      android:layout_marginStart="@dimen/d_10"
+      android:src="@drawable/logo" />
+
+    <LinearLayout
+      android:id="@+id/exc_goods_detail_company_name_ll"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_toEndOf="@+id/exc_goods_detail_company_header">
+
+      <TextView
+        android:id="@+id/exc_goods_detail_company_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="山东华鲁恒升化工集团"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/exc_goods_detail_company_name_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/d_10"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="@string/look_detail"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_11" />
+    </LinearLayout>
+
+    <ImageView
+      android:id="@+id/exc_goods_detail_company_level"
+      android:layout_width="@dimen/d_50"
+      android:layout_height="@dimen/d_10"
+      android:layout_below="@+id/exc_goods_detail_company_name_ll"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/dp_4"
+      android:layout_toEndOf="@+id/exc_goods_detail_company_header"
+      android:background="@color/text_color" />
+
+    <RatingBar
+      android:id="@+id/exc_goods_detail_company_rating"
+      style="@style/starRatingBar_mini"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/exc_goods_detail_company_name_ll"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/dp_4"
+      android:layout_toEndOf="@+id/exc_goods_detail_company_level"
+      android:gravity="center_vertical"
+      android:isIndicator="true"
+      android:rating="5.0"
+      android:stepSize="0.1"
+      android:visibility="visible" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/exc_goods_detail_company_rating"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginTop="@dimen/dp_4"
+      android:layout_toEndOf="@+id/exc_goods_detail_company_header">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="交易:268"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginStart="@dimen/d_30"
+        android:text="发货数：21785"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+  </RelativeLayout>
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_30"
+    android:layout_gravity="center_vertical"
+    android:layout_marginEnd="@dimen/d_5"
+    android:text="@string/exc_goods_detail_my"
+    android:layout_marginTop="@dimen/d_10"
+    android:paddingStart="@dimen/d_12"
+    android:layout_marginStart="@dimen/d_5"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:textColor="@color/text_color"
+    android:textSize="@dimen/s_11" />
+</LinearLayout>

@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
+import com.easy.easycan.goods.detail.ExcellentGoodsDetailActivity;
 import com.easy.easycan.goods.model.ExcellentGoodsListBean;
 import com.easy.easycan.goods.model.JsonBean;
 import com.easy.easycan.goods.view.ExcellentGoodsListAdapter;
@@ -19,7 +21,6 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.internal.disposables.DisposableContainer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -121,6 +122,12 @@ public class ExcellentGoodsFragment extends BaseFragment {
             showPickerView(4);
           }
         });
+
+    adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+      @Override public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        ExcellentGoodsDetailActivity.goActivity(getActivity(), "", "");
+      }
+    });
   }
 
   /**

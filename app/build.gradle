@@ -16,6 +16,11 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","x86_64"
+        }
     }
     signingConfigs {
         release {
@@ -50,6 +55,11 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("boolean", "ISRELEASE", "${IS_RELEASE}")
+        }
+    }
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
         }
     }
     compileOptions {
@@ -100,6 +110,12 @@ dependencies {
     implementation dep.agentweb
     /*时间选择*/
     implementation dep.picker_view
+    //3D地图so及jar  高德
+    implementation 'com.amap.api:3dmap:6.4.0'
+    //定位功能  高德
+    implementation 'com.amap.api:location:4.3.0'
+    //搜索功能
+    implementation 'com.amap.api:search:6.1.0'
     /**kotlin*/
     implementation "androidx.core:core-ktx:1.1.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

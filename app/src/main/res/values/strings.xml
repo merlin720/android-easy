@@ -8,9 +8,19 @@
     <string name="new_local_source">本地新货源</string>
     <string name="new_local_source_car">本地新车源</string>
     <string name="look_more">查看更多</string>
+    <string name="look_detail">查看详情</string>
     <string name="chemical_news">化工新闻</string>
     <string name="subscribe_goods_route">订阅发货线路、常跑车辆路线</string>
     <string name="subscribe_time_push">订阅实时推送、返程周边一起掌握</string>
     <string name="new_global_local_source">全国货源实时更新、会员精品货源已上线</string>
     <string name="new_global_local_source_car">本地最新货源、周边路线</string>
+    <string name="exc_goods_detail_title">抢单详情</string>
+
+    <string name="exc_goods_detail_my">我的报价</string>
+
+
+    <string name="error_network">搜索失败,请检查网络连接！</string>
+    <string name="error_key">key验证无效！</string>
+    <string name="error_other">未知错误，请稍后重试!错误码为</string>
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
 </resources>

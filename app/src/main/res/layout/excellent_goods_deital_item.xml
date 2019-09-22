@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="#e1e1e1"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:background="@color/grey_color" />
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="80dp">
+
+      <ImageView
+        android:id="@+id/exc_goods_detail_company_header"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/d_10"
+        android:src="@drawable/logo" />
+
+      <LinearLayout
+        android:id="@+id/exc_goods_detail_company_name_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_10"
+        android:layout_toEndOf="@+id/exc_goods_detail_company_header">
+
+        <TextView
+          android:id="@+id/exc_goods_detail_company_name"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:text="山东华鲁恒升化工集团"
+          android:textColor="@color/text_color"
+          android:textSize="@dimen/s_14" />
+
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/exc_goods_detail_company_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exc_goods_detail_company_name_ll"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_toEndOf="@+id/exc_goods_detail_company_header"
+        android:text="30吨/159****4892"
+        android:textColor="@color/grey_color" />
+
+      <TextView
+        android:id="@+id/exc_goods_detail_item_per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_25"
+        android:text="210元/吨"
+        android:textColor="@color/tips_color" />
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exc_goods_detail_company_level"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_toEndOf="@+id/exc_goods_detail_company_header">
+
+        <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:text="1分钟前"
+          android:textColor="@color/grey_color"
+          android:textSize="@dimen/s_14" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/corner_white_with_black_border"
+          android:padding="1dp"
+          android:text="货主未查看"
+          android:textColor="@color/grey_color"
+          android:textSize="@dimen/s_14" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/d_10"
+          android:layout_marginEnd="@dimen/d_10"
+          android:background="@drawable/corner_white_with_red_border"
+          android:padding="1dp"
+          android:text="取消报价"
+          android:textColor="@color/tips_color"
+          android:textSize="@dimen/s_14" />
+      </LinearLayout>
+    </RelativeLayout>
+  </LinearLayout>
+</LinearLayout>
