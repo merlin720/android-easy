@@ -1,2 +1,2 @@
-include ':app',':qmui',':lintrule'
+include ':app',':qmui',':lintrule',':flowlayout-lib'
 rootProject.name='easycan'

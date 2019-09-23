@@ -27,6 +27,7 @@
 
 
   <dimen name="s_3">3sp</dimen>
-
+  <dimen name="list_divider_height">1px</dimen>
+  <dimen name="list_divider_height_negative">-1px</dimen>
 
 </resources>

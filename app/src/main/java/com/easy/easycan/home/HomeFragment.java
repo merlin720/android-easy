@@ -58,7 +58,6 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
     private List<String> imgs;
     private List<String> bannerTitles;
 
-    private String img = CommonUtils.IP + "/static/banner/20190412.png";
 
     private Banner banner;
     /**
