@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
@@ -18,12 +18,10 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.goods.model.ExcellentGoodsListBean;
 import com.easy.easycan.goods.model.JsonBean;
-import com.easy.easycan.goods.view.ExcellentGoodsListAdapter;
+import com.easy.easycan.publish.nationalgoods.adapter.NationalSourceSupplyAdapter;
 import com.easy.easycan.util.GetJsonDataUtil;
-import com.easy.easycan.util.SizeUtils;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
-import com.qmuiteam.qmui.util.QMUIDeviceHelper;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.popup.QMUIPopup;
 import com.qmuiteam.qmui.widget.popup.QMUIPopups;
@@ -32,10 +30,11 @@ import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 
@@ -59,20 +58,38 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
       "一类", "二类", "三类", "四类", "五类", "六类", "七类", "八类", "九类", "普通货物"
   };
 
-
   private TextView mDepartureTv;
   private TextView mDestinationTv;
   private TextView mFiltrateTv;
 
+  private TextView resetTv;
+  private TextView submitTv;
+  /**
+   * 点筛选弹出的popup
+   */
+  private QMUIPopup mNormalPopup;
+  /** 筛选里时间的radioGroup */
+  private RadioGroup radioGroup;
+
+  private TagAdapter<String> sourceCarAdapter;
+  //货物类型的适配器
+  private TagAdapter<String> sourceTypeAdapter;
+
+  private Set<Integer> mCarDefaultSet = new HashSet<>();
+  private Set<Integer> mSourceDefaultSet = new HashSet<>();
+  private int defaultWidth;
+  /**
+   * 筛选框的高度
+   */
+  private int popupHeight;
   /**
    * 文字是蓝色还是黑色
    */
   private boolean isDepartureArrowUp = false;
   private boolean isDestinationArrowUp = false;
   private boolean isFiltrateArrowUp = false;
-  private boolean isTimeArrowUp = false;
 
-  private ExcellentGoodsListAdapter adapter;
+  private NationalSourceSupplyAdapter adapter;
   private RecyclerView mRecyclerView;
 
   @Override protected int getLayoutId() {
@@ -83,6 +100,10 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
 
   @Override
   protected void initView(View view) {
+    defaultWidth = QMUIDisplayHelper.dp2px(getActivity(), 15);
+    popupHeight =
+        QMUIDisplayHelper.getScreenHeight(getActivity()) - QMUIDisplayHelper.dp2px(getActivity(),
+            117);
     mDepartureTv = view.findViewById(R.id.excellent_goods_departure);
     mDestinationTv = view.findViewById(R.id.excellent_goods_destination);
     mFiltrateTv = view.findViewById(R.id.excellent_goods_filtrate);
@@ -90,7 +111,7 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
     mRecyclerView = view.findViewById(R.id.excellent_goods_recycler_view);
     LinearLayoutManager manager = new LinearLayoutManager(getActivity());
     mRecyclerView.setLayoutManager(manager);
-    adapter = new ExcellentGoodsListAdapter();
+    adapter = new NationalSourceSupplyAdapter();
     mRecyclerView.setAdapter(adapter);
     List<ExcellentGoodsListBean> listBeans = new ArrayList<>();
     for (int i = 0; i < 15; i++) {
@@ -159,24 +180,18 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
         isFiltrateArrowUp ? R.drawable.arrow_up_blue : R.drawable.arrow_down_gray, 0);
   }
 
-  private QMUIPopup mNormalPopup;
-
-  private RadioGroup radioGroup;
-
   private void showPop(TextView textView) {
     View view = LayoutInflater.from(getActivity()).inflate(R.layout.national_goods_select, null);
     mFlowLayout = view.findViewById(R.id.national_goods_select_car_flow);
     List<String> list = Arrays.asList(carType);
-    TagAdapter<String> adapter = new TagAdapter<String>(list) {
+    sourceCarAdapter = new TagAdapter<String>(list) {
 
       @Override
       public View getView(FlowLayout parent, int position, String s) {
         TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.tv,
             mFlowLayout, false);
         ViewGroup.LayoutParams layoutParams = tv.getLayoutParams();
-        layoutParams.width =
-            QMUIDisplayHelper.getScreenWidth(getActivity()) / 4 - QMUIDisplayHelper.dp2px(
-                getActivity(), 15);
+        layoutParams.width = QMUIDisplayHelper.getScreenWidth(getActivity()) / 4 - defaultWidth;
         tv.setLayoutParams(layoutParams);
         tv.setText(s);
         return tv;
@@ -191,23 +206,21 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
         super.unSelected(position, view);
       }
     };
-    adapter.setSelectedList(0 );
-    adapter.notifyDataChanged();
-    mFlowLayout.setAdapter(adapter);
+    mCarDefaultSet.add(0);
+    sourceCarAdapter.setSelectedList(mCarDefaultSet);
 
+    mFlowLayout.setAdapter(sourceCarAdapter);
 
     TagFlowLayout goodsFlowLayout = view.findViewById(R.id.national_goods_select_goods_flow);
     List<String> list1 = Arrays.asList(sourceType);
-    TagAdapter<String> adapter1 = new TagAdapter<String>(list1) {
+    sourceTypeAdapter = new TagAdapter<String>(list1) {
 
       @Override
       public View getView(FlowLayout parent, int position, String s) {
         TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.tv,
             goodsFlowLayout, false);
         ViewGroup.LayoutParams layoutParams = tv.getLayoutParams();
-        layoutParams.width =
-            QMUIDisplayHelper.getScreenWidth(getActivity()) / 4 - QMUIDisplayHelper.dp2px(
-                getActivity(), 10);
+        layoutParams.width = QMUIDisplayHelper.getScreenWidth(getActivity()) / 4 - defaultWidth;
         tv.setLayoutParams(layoutParams);
         tv.setText(s);
         return tv;
@@ -222,28 +235,68 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
         super.unSelected(position, view);
       }
     };
+
     for (int i = 0; i < list1.size(); i++) {
-      adapter1.setSelectedList(i);
+      mSourceDefaultSet.add(i);
     }
 
-    adapter1.notifyDataChanged();
-    goodsFlowLayout.setAdapter(adapter1);
+    sourceTypeAdapter.setSelectedList(mSourceDefaultSet);
+    goodsFlowLayout.setAdapter(sourceTypeAdapter);
 
-  radioGroup = view.findViewById(R.id.radio_group_button);
+    radioGroup = view.findViewById(R.id.radio_group_button);
+    radioButton = view.findViewById(R.id.national_goods_select_time_one);
 
-    mNormalPopup = QMUIPopups.popup(getActivity(), QMUIDisplayHelper.getScreenWidth(getContext()))
-        .preferredDirection(QMUIPopup.DIRECTION_BOTTOM)
-        .view(view)
-        .edgeProtection(QMUIDisplayHelper.dp2px(getActivity(), 20))
-        .dimAmount(0.6f)
-        .animStyle(QMUIPopup.ANIM_GROW_FROM_CENTER)
-        .onDismiss(new PopupWindow.OnDismissListener() {
-          @Override
-          public void onDismiss() {
-            Toast.makeText(getContext(), "onDismiss", Toast.LENGTH_SHORT).show();
+    resetTv = view.findViewById(R.id.national_goods_select_reset);
+    submitTv = view.findViewById(R.id.national_goods_select_submit);
+    RxView.clicks(resetTv)
+        .throttleFirst(500, TimeUnit.MILLISECONDS)
+        .subscribe(new Consumer<Object>() {
+          @Override public void accept(Object o) throws Exception {
+            resetParams();
           }
-        })
-        .show(textView);
+        });
+    RxView.clicks(submitTv)
+        .throttleFirst(500, TimeUnit.MILLISECONDS)
+        .subscribe(new Consumer<Object>() {
+          @Override public void accept(Object o) throws Exception {
+            submit();
+          }
+        });
+
+    mNormalPopup =
+        QMUIPopups.popup(getActivity(), QMUIDisplayHelper.getScreenWidth(getContext()))
+            .preferredDirection(QMUIPopup.DIRECTION_CENTER_IN_SCREEN)
+            .view(view)
+            .edgeProtection(0, QMUIDisplayHelper.dp2px(getActivity(), 110), 0, 0)
+            .dimAmount(0.6f)
+            .animStyle(QMUIPopup.ANIM_GROW_FROM_RIGHT)
+            .onDismiss(new PopupWindow.OnDismissListener() {
+              @Override
+              public void onDismiss() {
+                changeFiltrateStatus();
+              }
+            })
+            .show(textView);
+  }
+
+  RadioButton radioButton;
+
+  /**
+   * 重置
+   */
+  private void resetParams() {
+    sourceCarAdapter.setSelectedList(mCarDefaultSet);
+    sourceCarAdapter.notifyDataChanged();
+    sourceTypeAdapter.setSelectedList(mSourceDefaultSet);
+    sourceTypeAdapter.notifyDataChanged();
+    radioButton.setChecked(true);
+  }
+
+  /**
+   * 确定
+   */
+  private void submit() {
+    mNormalPopup.dismiss();
   }
 
   /**

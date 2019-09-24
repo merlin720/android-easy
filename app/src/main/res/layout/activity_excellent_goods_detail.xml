@@ -65,7 +65,7 @@
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:drawableLeft="@drawable/exc_goods_item_offer"
+        android:drawableLeft="@drawable/exc_goods_item_contact"
         android:drawablePadding="@dimen/d_5"
         android:gravity="center"
         android:text="立即报价"
