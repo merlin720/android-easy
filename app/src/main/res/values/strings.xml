@@ -23,4 +23,8 @@
     <string name="error_key">key验证无效！</string>
     <string name="error_other">未知错误，请稍后重试!错误码为</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
+
+    <string name="publish_goods_title">发布货源</string>
+    <string name="publish_car_title">发布货源</string>
+    <string name="publish_regular_source">常发货源</string>
 </resources>

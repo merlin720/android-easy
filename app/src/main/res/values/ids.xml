@@ -25,4 +25,5 @@
     <item name="topbar_right_change_button" type="id"/>
 
     <item name="layout_for_test" type="id"/>
+    <item name="publish_child_goods_title_right" type="id"/>
 </resources>

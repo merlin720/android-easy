@@ -14,8 +14,10 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnDismissListener;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
+import com.easy.easycan.goods.detail.ExcellentGoodsDetailActivity;
 import com.easy.easycan.goods.model.ExcellentGoodsListBean;
 import com.easy.easycan.goods.model.JsonBean;
 import com.easy.easycan.trade.nationalgoods.adapter.NationalSourceSupplyAdapter;
@@ -151,6 +153,12 @@ public class NationalSoureceSupplyFragment extends BaseFragment {
             showPop(mFiltrateTv);
           }
         });
+
+    adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+      @Override public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        ExcellentGoodsDetailActivity.goActivity(getActivity(), "", "");
+      }
+    });
   }
 
   /**

@@ -1,13 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
+  android:background="@color/qmui_config_color_blue">
 
-  <TextView
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:text="发布" />
-</LinearLayout>
+    android:background="@color/qmui_config_color_white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48">
+
+      <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/publish_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/d_48"
+        android:layout_centerInParent="true"
+        app:tl_indicator_color="#393E46"
+        app:tl_divider_color="@color/text_color"
+        app:tl_divider_width="1dp"
+        app:tl_textSelectColor="@color/white"
+        app:tl_textUnselectColor="@color/black"
+        app:tl_indicator_corner_radius="5dp"
+        app:tl_indicator_style="BLOCK" />
+    </RelativeLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+      android:id="@+id/publish_view_pager"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:fitsSystemWindows="true" />
+  </LinearLayout>
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
