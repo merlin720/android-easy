@@ -1,15 +1,8 @@
-package com.easy.easycan.publish.subroute;
+package com.easy.easycan.trade.subroute;
 
 import android.view.View;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
-import com.easy.easycan.goods.model.JsonBean;
-import com.easy.easycan.goods.view.ExcellentGoodsListAdapter;
-import com.qmuiteam.qmui.widget.QMUITopBar;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author merlin720

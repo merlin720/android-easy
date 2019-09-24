@@ -1,4 +1,4 @@
-package com.easy.easycan.publish.nationalgoods.adapter;
+package com.easy.easycan.trade.nationalgoods.adapter;
 
 import androidx.annotation.NonNull;
 import com.chad.library.adapter.base.BaseQuickAdapter;

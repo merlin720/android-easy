@@ -1,4 +1,4 @@
-package com.easy.easycan.publish.nationalgoods;
+package com.easy.easycan.trade.nationalgoods;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.goods.model.ExcellentGoodsListBean;
 import com.easy.easycan.goods.model.JsonBean;
-import com.easy.easycan.publish.nationalgoods.adapter.NationalSourceSupplyAdapter;
+import com.easy.easycan.trade.nationalgoods.adapter.NationalSourceSupplyAdapter;
 import com.easy.easycan.util.GetJsonDataUtil;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
