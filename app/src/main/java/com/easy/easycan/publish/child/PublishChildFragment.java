@@ -7,6 +7,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
+import com.easy.easycan.publish.child.bulk.PublishChildBulkActivity;
+import com.easy.easycan.publish.child.car.PublishChildCarActivity;
 import com.easy.easycan.publish.child.goods.PublishChildGoodsActivity;
 import com.jakewharton.rxbinding2.view.RxView;
 import io.reactivex.functions.Consumer;
@@ -57,6 +59,10 @@ public class PublishChildFragment extends BaseFragment {
           }
         });
   }
+
+  /**
+   * 跳转发布货源
+   */
   private void goPublishGoods() {
     startActivity(new Intent(getActivity(), PublishChildGoodsActivity.class));
   }
@@ -64,10 +70,13 @@ public class PublishChildFragment extends BaseFragment {
    * 跳转发布车源
    */
   private void goPublishCar() {
+    startActivity(new Intent(getActivity(), PublishChildCarActivity.class));
   }
 
-
-
+  /**
+   * 跳转批量发布
+   */
   private void goPublishBulk() {
+    startActivity(new Intent(getActivity(), PublishChildBulkActivity.class));
   }
 }

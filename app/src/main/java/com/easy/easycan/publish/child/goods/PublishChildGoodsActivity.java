@@ -9,6 +9,7 @@ import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.goods.detail.model.ExcellentGoodsDetailBean;
 import com.easy.easycan.goods.detail.view.ExceellentGoodsDetailView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import io.reactivex.functions.Consumer;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +24,7 @@ public class PublishChildGoodsActivity extends BaseActivity implements
   private QMUITopBar mTopBar;
 
   @Override protected int setLayoutId() {
-    return R.layout.activity_publish_child_goods;
+    return R.layout.activity_publish_child_bulk;
   }
 
   @Override protected void initData(@Nullable Bundle savedInstanceState) {
@@ -35,10 +36,11 @@ public class PublishChildGoodsActivity extends BaseActivity implements
   }
 
   private void initTopBar() {
-    mTopBar = findViewById(R.id.excellent_goods_detail_title);
+    mTopBar = findViewById(R.id.publish_child_goods_title);
     mTopBar.setVisibility(View.VISIBLE);
     mTopBar.setTitle(R.string.publish_goods_title);
-    Button button = mTopBar.addRightTextButton(R.string.publish_regular_source,R.id.publish_child_goods_title_right);
+    Button button = mTopBar.addRightTextButton(R.string.publish_regular_source,
+        QMUIViewHelper.generateViewId());
     RxView.clicks(button)
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .subscribe(new Consumer<Object>() {

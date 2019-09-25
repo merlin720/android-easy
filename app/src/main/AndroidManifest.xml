@@ -68,7 +68,16 @@
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />
-
+ <activity
+      android:name=".publish.child.car.PublishChildCarActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
+    <activity
+      android:name=".publish.child.bulk.PublishChildBulkActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
 
   </application>
 

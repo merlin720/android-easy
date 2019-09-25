@@ -1,4 +1,4 @@
-package com.easy.easycan.publish.child.car;
+package com.easy.easycan.publish.child.bulk;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +12,14 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 /**
  * @author merlin
  * date 2019年09月21日
- * desc 发布货源的发布页。
+ * desc 批量发布的发布页。
  */
-public class PublishChildCarActivity extends BaseActivity implements
+public class PublishChildBulkActivity extends BaseActivity implements
     ExceellentGoodsDetailView {
   private QMUITopBar mTopBar;
 
   @Override protected int setLayoutId() {
-    return R.layout.activity_publish_child_car;
+    return R.layout.activity_publish_child_bulk;
   }
 
   @Override protected void initData(@Nullable Bundle savedInstanceState) {
