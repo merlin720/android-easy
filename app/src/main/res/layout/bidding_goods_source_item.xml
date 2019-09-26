@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/bidding_goods_source_ll"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginStart="@dimen/d_5"
+  android:layout_marginEnd="@dimen/d_5"
+  android:background="@android:color/white"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_48"
+    android:gravity="center_vertical">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:text="竞价截止"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_14" />
+
+    <TextView
+      android:id="@+id/bidding_goods_source_switch_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:text="否"
+      android:textColor="@color/text_color"
+      android:textSize="@dimen/s_14" />
+
+
+    <Switch
+      android:id="@+id/bidding_goods_source_switch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:text="结款方式"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_14" />
+
+    <TextView
+      android:id="@+id/bidding_goods_source_payment_tv"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:layout_weight="1"
+      android:drawableEnd="@drawable/arrow_right"
+      android:text="请选择"
+      android:textColor="@color/qmui_config_color_gray_8"
+      android:textSize="@dimen/s_14" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_48"
+    android:gravity="center_vertical">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:text="竞价截止"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_14" />
+
+    <TextView
+      android:id="@+id/bidding_goods_source_deadline_tv"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:layout_weight="1"
+      android:background="@null"
+      android:drawableEnd="@drawable/arrow_right"
+      android:text="选填，车辆报价截止时间"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_14" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_48"
+    android:gravity="center_vertical">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:text="备注"
+      android:textColor="@color/grey_color"
+      android:textSize="@dimen/s_14" />
+
+    <EditText
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_10"
+      android:layout_weight="1"
+      android:background="@null"
+      android:drawableEnd="@drawable/arrow_right"
+      android:hint="选填"
+      android:textColorHint="@color/qmui_config_color_gray_8"
+      android:textSize="@dimen/s_14" />
+  </LinearLayout>
+</LinearLayout>
