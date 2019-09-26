@@ -1,6 +1,11 @@
 package com.easy.easycan.publish.child.goods;
 
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -33,6 +38,7 @@ import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.zhy.view.flowlayout.TagFlowLayout;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import java.text.SimpleDateFormat;
@@ -56,11 +62,15 @@ public class PublishChildGoodsActivity extends BaseActivity implements
    */
   private TextView mDepartureTv;
   private TextView mDestinationTv;
-  private TextView mGoodsNameTv;
+  private EditText mGoodsNameTv;
   private TextView goodsTypeTv;
   private TextView mTankRequirementsTv;
   private TextView mLoadingTimeTv;
   private EditText goodsNumEd;
+  private EditText contactNameEd;
+  private EditText contactPhoneEd;
+
+  private TextView addressBookTv;
   private List<String> mFiltrateData = new ArrayList<>();
   private List<String> mTimeData = new ArrayList<>();
 
@@ -82,6 +92,9 @@ public class PublishChildGoodsActivity extends BaseActivity implements
     mTankRequirementsTv = findViewById(R.id.publish_goods_tank_requirements);
     mLoadingTimeTv = findViewById(R.id.publish_goods_loading_time);
     goodsNumEd = findViewById(R.id.publish_goods_goods_num);
+    addressBookTv = findViewById(R.id.publish_goods_address_book);
+    contactNameEd = findViewById(R.id.publish_goods_contact_name);
+    contactPhoneEd = findViewById(R.id.publish_goods_contact_phone);
     AreaPickerUtils.getInstance().initJsonData(this);
     initCustomTimePicker();
   }
@@ -123,6 +136,7 @@ public class PublishChildGoodsActivity extends BaseActivity implements
               mDepartureTv.setText(commitStr);
               mDepartureTv.setTextColor(ContextCompat.getColor(PublishChildGoodsActivity.this, R.color.text_color));
             }));
+
     Disposable disposable2 = RxView.clicks(goodsTypeTv)
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .subscribe(o ->  {
@@ -143,24 +157,69 @@ public class PublishChildGoodsActivity extends BaseActivity implements
         .subscribe(o ->{
           pvCustomTime.show();
         } );
+    Disposable disposable7 = RxView.clicks(addressBookTv)
+        .throttleFirst(500, TimeUnit.MILLISECONDS)
+        .subscribe(o ->{
+          Intent intent = new Intent();
+          intent.setAction("android.intent.action.PICK");
+          intent.addCategory("android.intent.category.DEFAULT");
+          intent.setType("vnd.android.cursor.dir/phone_v2");
+          startActivityForResult(intent, 0x30);
+        } );
   }
 
   @Override public void showData(ExcellentGoodsDetailBean model) {
 
   }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if(requestCode==0x30) {
+      if (data != null) {
+        Uri uri = data.getData();
+        String phoneNum = null;
+        String contactName = null;
+        // 创建内容解析者
+        ContentResolver contentResolver = getContentResolver();
+        Cursor cursor = null;
+        if (uri != null) {
+          cursor = contentResolver.query(uri,
+              new String[]{"display_name","data1"},null,null,null);
+        }
+        while (cursor.moveToNext()) {
+          contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+          phoneNum = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+        }
+        cursor.close();
+        //  把电话号码中的  -  符号 替换成空格
+        if (phoneNum != null) {
+          phoneNum = phoneNum.replaceAll("-", " ");
+          // 空格去掉  为什么不直接-替换成"" 因为测试的时候发现还是会有空格 只能这么处理
+          phoneNum= phoneNum.replaceAll(" ", "");
+        }
+
+        contactNameEd.setText(contactName);
+        contactPhoneEd.setText(phoneNum);
+      }
+    }
+  }
+
+
   private AlertDialog alertDialog;
 
   /**
-   * 抢单
+   *  货物名称
    * @param str
    */
   private void createDialog(String str) {
-    View mLmCountView = LayoutInflater.from(this).inflate(R.layout.qmui_dialog_layout, null);
-
+    View mLmCountView = LayoutInflater.from(this).inflate(R.layout.publish_goods_choose_goods_num, null);
+    TagFlowLayout tagFlowLayout = mLmCountView.findViewById(R.id.publish_goods_choose_goods_flow);
     AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Dialog_Fullscreen);
     builder.setCancelable(true);
     builder.setView(mLmCountView);
     alertDialog = builder.create();
+
 
     if (null != alertDialog && !alertDialog.isShowing()) {
       alertDialog.show();
@@ -179,6 +238,9 @@ public class PublishChildGoodsActivity extends BaseActivity implements
       alertDialog.dismiss();
     }
   }
+  /**
+   * 货物类型和车辆罐体这两个弹窗。
+   */
   private void initNoLinkOptionsPicker(){
     OptionsPickerView pvNoLinkOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
 
