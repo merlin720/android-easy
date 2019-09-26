@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/d_40"
+    android:layout_marginStart="@dimen/d_10"
+    android:gravity="center_vertical"
+    android:text="货物名称"
+    android:textColor="@color/text_color"
+    android:textSize="@dimen/s_14" />
+
+  <EditText
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_40"
+    android:layout_marginStart="@dimen/d_10"
+    android:layout_marginEnd="@dimen/d_10"
+    android:background="@drawable/corner_white_with_black_border"
+    android:hint="其它 请输入其它货物名称（最多五个字）"
+    android:paddingStart="@dimen/d_10"
+    android:textColorHint="@color/grey_color"
+    android:textSize="@dimen/s_14" />
+
+  <com.zhy.view.flowlayout.TagFlowLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>

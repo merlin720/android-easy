@@ -14,10 +14,248 @@
     app:qmui_topbar_text_btn_color_state_list="@color/text_color"
     app:qmui_topbar_title_color="@color/text_color" />
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:text="发布货源" />
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_5"
+    android:layout_marginTop="@dimen/d_10"
+    android:layout_marginEnd="@dimen/d_5"
+    android:background="@drawable/corner_white_8"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="出发地"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_child_goods_dep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="请选择目的地址"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="卸货地"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_child_goods_destination"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="请选择卸货地址"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="货物名称"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_goods_goods_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="必填"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="货物类型"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_goods_goods_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="请选择"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="出发地"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <EditText
+        android:id="@+id/publish_goods_goods_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_weight="1"
+        android:background="@null"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/grey_color"
+        android:hint="请选择目的地址"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/d_10"
+        android:text="吨"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="罐体要求"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_goods_tank_requirements"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="必填，更好的匹配车辆"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="装车时间"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_goods_loading_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:drawableEnd="@drawable/arrow_right"
+        android:text="选填，大幅提升相应速度"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+  </LinearLayout>
 </LinearLayout>

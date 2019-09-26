@@ -5,134 +5,145 @@
   android:background="#e1e1e1"
   android:orientation="vertical">
 
-  <RelativeLayout
-    android:id="@+id/publish_child_publish_goods"
+  <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="@dimen/d_10"
-    android:layout_marginTop="@dimen/d_30"
-    android:layout_marginEnd="@dimen/d_10"
-    android:layout_weight="1"
-    android:background="@drawable/corner_white_8">
+    android:layout_height="match_parent">
 
     <LinearLayout
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:gravity="center_horizontal"
       android:orientation="vertical">
 
-      <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/publish_child_goods" />
+      <RelativeLayout
+        android:id="@+id/publish_child_publish_goods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginTop="@dimen/d_30"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:background="@drawable/corner_white_8"
+        android:minHeight="150dp">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:gravity="center_horizontal"
+          android:orientation="vertical">
+
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/publish_child_goods" />
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="发布货源"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+        </LinearLayout>
+
+      </RelativeLayout>
 
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_10"
-        android:text="发布货源"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/s_15" />
-    </LinearLayout>
-
-  </RelativeLayout>
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="@dimen/d_3"
-    android:text="未认证-发布普通货源、线下联系" />
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="@dimen/d_3"
-    android:text="已认证-发布竞价、抢单货源、线上接单" />
-
-  <RelativeLayout
-    android:id="@+id/publish_child_publish_car"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="@dimen/d_10"
-    android:layout_marginEnd="@dimen/d_10"
-    android:layout_weight="1"
-    android:background="@drawable/corner_white_8">
-
-    <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:gravity="center_horizontal"
-      android:orientation="vertical">
-
-      <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/publish_child_car" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_3"
+        android:text="未认证-发布普通货源、线下联系" />
 
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_10"
-        android:text="发布车源"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/s_15" />
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/d_3"
+        android:text="已认证-发布竞价、抢单货源、线上接单" />
 
-  </RelativeLayout>
+      <RelativeLayout
+        android:id="@+id/publish_child_publish_car"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:minHeight="150dp"
+        android:background="@drawable/corner_white_8">
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="@dimen/d_3"
-    android:layout_marginBottom="@dimen/d_15"
-    android:text="易罐动力池、空车资源一旦释放，八方货源待装" />
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:gravity="center_horizontal"
+          android:orientation="vertical">
 
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/publish_child_car" />
 
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="发布车源"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+        </LinearLayout>
 
-  <RelativeLayout
-    android:id="@+id/publish_child_publish_bulk"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="@dimen/d_10"
-    android:layout_marginEnd="@dimen/d_10"
-    android:layout_weight="1"
-    android:background="@drawable/corner_white_8">
-
-    <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:gravity="center_horizontal"
-      android:orientation="vertical">
-
-      <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bulk_release" />
+      </RelativeLayout>
 
       <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/d_10"
-        android:text="批量发布"
-        android:textColor="@color/text_color"
-        android:textSize="@dimen/s_15" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_3"
+        android:layout_marginBottom="@dimen/d_15"
+        android:text="易罐动力池、空车资源一旦释放，八方货源待装" />
+
+
+      <RelativeLayout
+        android:id="@+id/publish_child_publish_bulk"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:minHeight="150dp"
+        android:layout_weight="1"
+        android:background="@drawable/corner_white_8">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:gravity="center_horizontal"
+          android:orientation="vertical">
+
+          <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bulk_release" />
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:text="批量发布"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/s_15" />
+        </LinearLayout>
+
+      </RelativeLayout>
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_5"
+        android:layout_marginBottom="@dimen/d_30"
+        android:text="批量发布货源，智能识别" />
     </LinearLayout>
-
-  </RelativeLayout>
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="@dimen/d_5"
-    android:layout_marginBottom="@dimen/d_30"
-    android:text="批量发布货源，智能识别" />
-
-
+  </ScrollView>
 </LinearLayout>

@@ -24,7 +24,7 @@ public class PublishChildFragment extends BaseFragment {
 
   @BindView(R.id.publish_child_publish_goods) RelativeLayout publishGoods;
   @BindView(R.id.publish_child_publish_car) RelativeLayout publishCar;
-  @BindView(R.id.publish_child_publish_bulk) RelativeLayout publisBulk;
+  @BindView(R.id.publish_child_publish_bulk) RelativeLayout publishBulk;
 
   @Override protected int getLayoutId() {
     return R.layout.publish_child_fragment;
@@ -51,7 +51,7 @@ public class PublishChildFragment extends BaseFragment {
             goPublishCar();
           }
         });
-    RxView.clicks(publisBulk)
+    RxView.clicks(publishBulk)
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .subscribe(new Consumer<Object>() {
           @Override public void accept(Object o) throws Exception {
