@@ -107,10 +107,50 @@
     </LinearLayout>
 
     <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginTop="@dimen/d_10"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@android:color/white"
+      android:orientation="vertical">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_48"
+        android:gravity="center_vertical">
+
+        <TextView
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/d_10"
+          android:layout_weight="1"
+          android:text="车辆信息"
+          android:textColor="@color/grey_color"
+          android:textSize="@dimen/s_14" />
+
+        <TextView
+
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/d_10"
+          android:layout_marginEnd="@dimen/d_10"
+          android:text="车辆管理"
+          android:textColor="@color/standard_blue"
+          android:textSize="@dimen/s_14" />
+
+      </LinearLayout>
+      <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
       android:id="@+id/normal_goods_source_ll"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/d_5"
+      android:layout_marginTop="@dimen/d_10"
       android:layout_marginEnd="@dimen/d_5"
       android:background="@android:color/white"
       android:orientation="vertical">
@@ -129,6 +169,7 @@
           android:textSize="@dimen/s_14" />
 
         <TextView
+          android:id="@+id/publish_car_publish_time"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginStart="@dimen/d_10"

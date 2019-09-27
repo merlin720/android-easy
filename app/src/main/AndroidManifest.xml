@@ -78,7 +78,11 @@
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />
-
+    <activity
+      android:name=".publish.child.goods.regular.RegularShippingSourceActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
   </application>
 
 </manifest>

@@ -113,7 +113,7 @@ public class AreaPickerUtils {
     showPickerView(context, null, commitListener);
   }
 
-  public void showPickerView(Context context, OnDismissListener onDismissListener,
+  public void  showPickerView(Context context, OnDismissListener onDismissListener,
       CommitListener commitListener) {// 弹出选择器
     OptionsPickerView pvOptions =
         new OptionsPickerBuilder(context, new OnOptionsSelectListener() {

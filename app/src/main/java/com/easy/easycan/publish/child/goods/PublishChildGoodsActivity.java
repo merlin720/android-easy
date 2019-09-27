@@ -38,6 +38,7 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.goods.detail.model.ExcellentGoodsDetailBean;
 import com.easy.easycan.goods.detail.view.ExceellentGoodsDetailView;
+import com.easy.easycan.publish.child.goods.regular.RegularShippingSourceActivity;
 import com.easy.easycan.util.AreaPickerUtils;
 import com.easy.easycan.util.SizeUtils;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -142,11 +143,11 @@ public class PublishChildGoodsActivity extends BaseActivity implements
     mTopBar.setTitle(R.string.publish_goods_title);
     Button button = mTopBar.addRightTextButton(R.string.publish_regular_source,
         QMUIViewHelper.generateViewId());
-    RxView.clicks(button)
+    Disposable disposable = RxView.clicks(button)
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .subscribe(new Consumer<Object>() {
           @Override public void accept(Object o) throws Exception {
-
+            startActivity(new Intent(PublishChildGoodsActivity.this, RegularShippingSourceActivity.class));
           }
         });
     mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
