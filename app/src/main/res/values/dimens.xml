@@ -3,6 +3,7 @@
 
   <dimen name="status_bar_height">0dp</dimen>
   <dimen name="home_tab_height">49dp</dimen>
+  <dimen name="d_260">260dp</dimen>
   <dimen name="d_220">220dp</dimen>
   <dimen name="d_50">50dp</dimen>
   <dimen name="d_48">48dp</dimen>
@@ -16,6 +17,7 @@
   <dimen name="d_8">8dp</dimen>
   <dimen name="d_5">5dp</dimen>
   <dimen name="d_3">3dp</dimen>
+  <dimen name="d_2">2dp</dimen>
 
   <dimen name="s_18">18sp</dimen>
   <dimen name="s_16">16sp</dimen>
