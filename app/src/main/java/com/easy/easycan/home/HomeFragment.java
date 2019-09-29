@@ -8,11 +8,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import com.easy.easycan.MainActivity;
 import com.easy.easycan.home.bean.HomeBannerBean;
 import com.easy.easycan.home.bean.NewsTitleBean;
 import com.easy.easycan.home.news.NewsListActivity;
 import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.home.presenter.HomePresenter;
+import com.easy.easycan.home.stramer.StreamerInformationActivity;
 import com.easy.easycan.home.view.HomeView;
 import com.easy.easycan.util.GlideImageLoader;
 import com.easy.easycan.R;
@@ -38,6 +40,7 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.disposables.Disposable;
@@ -165,6 +168,14 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getActivity(), titles[i], Toast.LENGTH_LONG).show();
+                switch (i) {
+                    case 1:
+                        ((MainActivity) Objects.requireNonNull(getActivity())).switchToFragment(3);
+                        break;
+                    case 6:
+                      startActivity(new Intent(getActivity(), StreamerInformationActivity.class));
+                        break;
+                }
             }
         });
         Disposable disposable = RxView.clicks(mSubscribeRoute)

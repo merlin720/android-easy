@@ -33,6 +33,7 @@
     <string name="add_new_car">添加车辆</string>
 
     <string name="manage_car">车辆管理</string>
+    <string name="streamer_info">蒸罐信息</string>
 
     <string name="publish_protocol">我已阅读并同意《道路运输协议》等协议</string>
 </resources>

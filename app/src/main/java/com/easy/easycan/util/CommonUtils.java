@@ -28,6 +28,8 @@ public class CommonUtils {
 
     public static final String HOME_NEWS_LIST_DETAIL = M_IP+"/app/news?channel_code=%s&id=%s";
 
+    //蒸罐信息?page=1&pageSize=20
+    public static final String HOME_STREAMER_INFORMATION = IP+"/api/zhengguan";
 
     //
 

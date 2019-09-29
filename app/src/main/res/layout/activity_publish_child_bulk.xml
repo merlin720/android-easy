@@ -230,7 +230,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/d_10"
-        android:text="备注"
+        android:text="电话"
         android:textColor="@color/grey_color"
         android:textSize="@dimen/s_14" />
 
