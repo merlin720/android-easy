@@ -20,6 +20,7 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.goods.detail.model.ExcellentGoodsDetailBean;
 import com.easy.easycan.goods.detail.view.ExceellentGoodsDetailView;
+import com.easy.easycan.me.managecar.CarManagementActivity;
 import com.easy.easycan.publish.child.goods.PublishChildGoodsActivity;
 import com.easy.easycan.util.AreaPickerUtils;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -51,6 +52,9 @@ public class PublishChildCarActivity extends BaseActivity implements
 
   private EditText contactNameEd;
   private EditText contactPhoneEd;
+
+  private TextView manageCarTv;
+
   @Override protected int setLayoutId() {
     return R.layout.activity_publish_child_car;
   }
@@ -67,6 +71,7 @@ public class PublishChildCarActivity extends BaseActivity implements
     addressBookTv = findViewById(R.id.publish_goods_address_book);
     contactNameEd = findViewById(R.id.publish_goods_contact_name);
     contactPhoneEd = findViewById(R.id.publish_goods_contact_phone);
+    manageCarTv = findViewById(R.id.publish_car_manage_car);
     AreaPickerUtils.getInstance().initJsonData(this);
     initCustomTimePicker();
   }
@@ -106,6 +111,11 @@ public class PublishChildCarActivity extends BaseActivity implements
         .throttleFirst(500, TimeUnit.MILLISECONDS)
         .subscribe(o -> {
           pvCustomTime.show();
+        });
+    Disposable disposable3 = RxView.clicks(manageCarTv)
+        .throttleFirst(500, TimeUnit.MILLISECONDS)
+        .subscribe(o -> {
+          startActivity(new Intent(PublishChildCarActivity.this, CarManagementActivity.class));
         });
 
     Disposable disposable7 = RxView.clicks(addressBookTv)
