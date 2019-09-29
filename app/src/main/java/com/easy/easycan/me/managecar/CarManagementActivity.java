@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
-import com.easy.easycan.goods.detail.model.ExcellentGoodsDetailBean;
-import com.easy.easycan.goods.detail.view.ExceellentGoodsDetailView;
 import com.easy.easycan.goods.model.ExcellentGoodsListBean;
-import com.easy.easycan.publish.goods.adapter.PublishChildGoodsAdapter;
+import com.easy.easycan.me.managecar.adapter.CarManageAdapter;
 import com.easy.easycan.util.LinearItemDecoration;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
@@ -30,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class CarManagementActivity extends BaseActivity {
 
-  private PublishChildGoodsAdapter adapter;
+  private CarManageAdapter adapter;
   private RecyclerView mRecyclerView;
   private QMUITopBar mTopBar;
 
@@ -47,11 +45,9 @@ public class CarManagementActivity extends BaseActivity {
     mRecyclerView =  findViewById(R.id.car_manage_recycler_view);
     LinearLayoutManager manager = new LinearLayoutManager(this);
     mRecyclerView.setLayoutManager(manager);
-    adapter = new PublishChildGoodsAdapter();
+    adapter = new CarManageAdapter();
     mRecyclerView.setAdapter(adapter);
-    LinearItemDecoration
-        itemDecoration = new LinearItemDecoration(QMUIDisplayHelper.dp2px(this, 10));
-    //mRecyclerView.addItemDecoration(itemDecoration);
+
     List<ExcellentGoodsListBean> listBeans = new ArrayList<>();
     for (int i = 0; i < 15; i++) {
       listBeans.add(new ExcellentGoodsListBean());
