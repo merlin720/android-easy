@@ -13,14 +13,29 @@
     app:qmui_topbar_left_back_drawable_id="@drawable/left_arrow"
     app:qmui_topbar_text_btn_color_state_list="@color/text_color"
     app:qmui_topbar_title_color="@color/text_color" />
+
+  <EditText
+    android:id="@+id/streamer_info_input_et"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_48"
+    android:layout_marginStart="@dimen/d_10"
+    android:layout_marginTop="@dimen/d_3"
+    android:layout_marginEnd="@dimen/d_10"
+    android:textColor="@color/text_color"
+    android:hint="请输入"
+    android:paddingStart="@dimen/d_10"
+    android:textColorHint="@color/grey_color"
+    android:layout_marginBottom="@dimen/d_3"
+    android:background="@drawable/corner_white" />
+
   <com.scwang.smartrefresh.layout.SmartRefreshLayout
     android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e1e1e1"
     app:srlDisableContentWhenRefresh="true"
     app:srlEnableFooterFollowWhenLoadFinished="true"
     app:srlEnableHeaderTranslationContent="true"
-    android:background="#e1e1e1"
     app:srlEnableLoadMore="true">
 
     <androidx.recyclerview.widget.RecyclerView

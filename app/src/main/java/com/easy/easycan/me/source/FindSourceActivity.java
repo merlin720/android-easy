@@ -1,0 +1,52 @@
+package com.easy.easycan.me.source;
+
+import android.os.Bundle;
+import android.view.View;
+import androidx.annotation.Nullable;
+import com.easy.easycan.R;
+import com.easy.easycan.base.BaseActivity;
+import com.easy.easycan.trade.nationalgoods.NationalSoureceSupplyFragment;
+import com.qmuiteam.qmui.widget.QMUITopBar;
+
+/**
+ * @author merlin
+ * date 2019年09月21日
+ * desc 我要找货。
+ */
+public class FindSourceActivity extends BaseActivity {
+
+  private QMUITopBar mTopBar;
+
+  @Override protected int setLayoutId() {
+    return R.layout.activity_find_source_goods;
+  }
+
+  @Override protected void initData(@Nullable Bundle savedInstanceState) {
+    super.initData(savedInstanceState);
+  }
+
+  @Override protected void initView() {
+    initTopBar();
+    NationalSoureceSupplyFragment fragment = new NationalSoureceSupplyFragment();
+    getSupportFragmentManager().beginTransaction().replace(R.id.find_source_fl, fragment).commit();
+  }
+
+  private void initTopBar() {
+    mTopBar = findViewById(R.id.find_source_title);
+    mTopBar.setVisibility(View.VISIBLE);
+    mTopBar.setTitle(R.string.find_source);
+
+    mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        finish();
+      }
+    });
+  }
+
+  boolean upOrDown = false;
+
+  @Override protected void setListener() {
+
+  }
+}

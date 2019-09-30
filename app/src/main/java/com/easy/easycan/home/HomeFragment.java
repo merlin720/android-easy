@@ -16,6 +16,8 @@ import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.home.presenter.HomePresenter;
 import com.easy.easycan.home.stramer.StreamerInformationActivity;
 import com.easy.easycan.home.view.HomeView;
+import com.easy.easycan.me.source.FindSourceActivity;
+import com.easy.easycan.me.sourcecar.FindSourceCarActivity;
 import com.easy.easycan.util.GlideImageLoader;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
@@ -169,8 +171,14 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getActivity(), titles[i], Toast.LENGTH_LONG).show();
                 switch (i) {
+                    case 0:
+                        startActivity(new Intent(getActivity(), FindSourceActivity.class));
+                        break;
                     case 1:
                         ((MainActivity) Objects.requireNonNull(getActivity())).switchToFragment(3);
+                        break;
+                    case 4:
+                        startActivity(new Intent(getActivity(), FindSourceCarActivity.class));
                         break;
                     case 6:
                       startActivity(new Intent(getActivity(), StreamerInformationActivity.class));

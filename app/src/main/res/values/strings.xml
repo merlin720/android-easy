@@ -29,6 +29,8 @@
     <string name="publish_car_title">发布车源</string>
     <string name="publish_regular_source">常发货源</string>
     <string name="publish_bulk_source">批量发布货源</string>
+    <string name="find_source">我要找货</string>
+    <string name="find_car">我要找车</string>
 
     <string name="add_new_car">添加车辆</string>
 
