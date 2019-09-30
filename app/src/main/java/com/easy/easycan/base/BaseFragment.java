@@ -44,7 +44,6 @@ public abstract class BaseFragment extends QMUIFragment {
   @Override
   public void onResume() {
     super.onResume();
-    //QDUpgradeManager.getInstance(getContext()).runUpgradeTipTaskIfExist(getActivity());
 
   }
 
@@ -59,29 +58,5 @@ public abstract class BaseFragment extends QMUIFragment {
     //startActivity(intent);
   }
 
-  //protected void injectDocToTopBar(QMUITopBar topBar) {
-  //  final QDItemDescription description = QDDataManager.getInstance().getDescription(this.getClass());
-  //  if (description != null) {
-  //    topBar.addRightTextButton("DOC", QMUIViewHelper.generateViewId())
-  //        .setOnClickListener(new View.OnClickListener() {
-  //          @Override
-  //          public void onClick(View v) {
-  //            goToWebExplorer(description.getDocUrl(), description.getName());
-  //          }
-  //        });
-  //  }
-  //}
-  //
-  //protected void injectDocToTopBar(QMUITopBarLayout topBar){
-  //  final QDItemDescription description = QDDataManager.getInstance().getDescription(this.getClass());
-  //  if (description != null) {
-  //    topBar.addRightTextButton("DOC", QMUIViewHelper.generateViewId())
-  //        .setOnClickListener(new View.OnClickListener() {
-  //          @Override
-  //          public void onClick(View v) {
-  //            goToWebExplorer(description.getDocUrl(), description.getName());
-  //          }
-  //        });
-  //  }
-  //}
+
 }

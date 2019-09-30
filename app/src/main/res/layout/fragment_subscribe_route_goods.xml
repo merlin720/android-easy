@@ -5,70 +5,27 @@
   android:layout_height="match_parent"
   android:orientation="vertical">
 
-  <LinearLayout
+  <com.flyco.tablayout.CommonTabLayout
+    android:id="@+id/tl_10"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/home_tab_height"
-    android:background="@color/white">
+    android:layout_height="wrap_content"
+    app:tl_indicator_color="#393E46"
+    app:tl_indicator_corner_radius="5dp"
+    app:tl_indicator_style="NORMAL"
+    app:tl_iconGravity="TOP"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    app:tl_textSelectColor="@color/standard_blue"
+    app:tl_textUnselectColor="@color/standard_blue"
+    app:tl_iconHeight="60dp"
+    app:tl_iconWidth="80dp"
 
-    <TextView
-      android:id="@+id/excellent_goods_departure"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_marginEnd="@dimen/d_10"
-      android:layout_weight="1"
-      android:drawableEnd="@drawable/arrow_down_gray"
-      android:gravity="center"
-      android:text="出发地" />
+      />
 
-    <View
-      android:layout_width="1dp"
-      android:layout_height="@dimen/d_20"
-      android:layout_gravity="center_vertical"
-      android:background="@color/grey_color" />
-
-    <TextView
-      android:id="@+id/excellent_goods_destination"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_marginEnd="@dimen/d_10"
-      android:layout_weight="1"
-      android:drawableEnd="@drawable/arrow_down_gray"
-      android:gravity="center"
-      android:text="目的地" />
-
-    <View
-      android:layout_width="1dp"
-      android:layout_height="@dimen/d_20"
-      android:layout_gravity="center_vertical"
-      android:background="@color/grey_color" />
-
-    <TextView
-      android:id="@+id/excellent_goods_filtrate"
-      android:layout_width="0dp"
-      android:layout_height="match_parent"
-      android:layout_marginEnd="@dimen/d_10"
-      android:layout_weight="1"
-      android:drawableEnd="@drawable/arrow_down_gray"
-      android:gravity="center"
-      android:text="筛选" />
-
-  </LinearLayout>
-
-  <com.scwang.smartrefresh.layout.SmartRefreshLayout
-    android:id="@+id/refreshLayout"
+  <androidx.viewpager.widget.ViewPager
+    android:id="@+id/contentViewPager"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:srlDisableContentWhenRefresh="true"
-    app:srlEnableFooterFollowWhenLoadFinished="true"
-    app:srlEnableHeaderTranslationContent="true"
-    app:srlEnableLoadMore="true">
-
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/excellent_goods_recycler_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:focusable="true"
-      android:focusableInTouchMode="true" />
-  </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:fitsSystemWindows="true" />
 </LinearLayout>
