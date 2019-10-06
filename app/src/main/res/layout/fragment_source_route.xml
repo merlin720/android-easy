@@ -7,11 +7,21 @@
   android:orientation="vertical"
   tools:context=".home.news.NewsListActivity">
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/news_list_recycler_view"
+  <com.scwang.smartrefresh.layout.SmartRefreshLayout
+    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true" />
+    app:srlDisableContentWhenRefresh="true"
+    app:srlEnableFooterFollowWhenLoadFinished="true"
+    app:srlEnableHeaderTranslationContent="true"
+    app:srlEnableLoadMore="true">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/source_route_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:focusable="true"
+      android:focusableInTouchMode="true" />
+  </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>
 

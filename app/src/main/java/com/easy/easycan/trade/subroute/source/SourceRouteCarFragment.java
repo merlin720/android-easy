@@ -8,6 +8,7 @@ import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.trade.subroute.source.adapter.SourceRouteAdapter;
 import com.easy.easycan.trade.subroute.source.adapter.SourceRouteEmptyAdapter;
+import com.easy.easycan.trade.subroute.source.bean.SourceRouteCarBean;
 import com.easy.easycan.trade.subroute.source.bean.SourceRouteEmptyBean;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
  * @author merlin720
  * date 2019-09-30
  * email zy44638@gmail.com
- * description 货源线路
+ * description 车源线路
  */
-public class SourceRouteFragment extends BaseFragment {
+public class SourceRouteCarFragment extends BaseFragment {
 
   private RecyclerView recyclerView;
   private View header;
@@ -43,9 +44,17 @@ public class SourceRouteFragment extends BaseFragment {
     initHeader();
     initEmptyView();
     SourceRouteAdapter adapter = new SourceRouteAdapter();
+    recyclerView.setAdapter(adapter);
     adapter.setEmptyView(mEmptyView);
     adapter.setHeaderView(header);
-    recyclerView.setAdapter(adapter);
+    List<SourceRouteCarBean> list = new ArrayList<>();
+    for (int i = 0; i < 5; i++) {
+      SourceRouteCarBean bean = new SourceRouteCarBean();
+      bean.setDep("东营/烟台/德州");
+      bean.setDestination("西安");
+      list.add(bean);
+    }
+    adapter.setNewData(list);
   }
 
   private void initHeader() {

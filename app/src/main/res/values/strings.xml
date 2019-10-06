@@ -38,4 +38,5 @@
     <string name="streamer_info">蒸罐信息</string>
 
     <string name="publish_protocol">我已阅读并同意《道路运输协议》等协议</string>
+  <string name="source_route_add_more_tips">添加长跑路线路，解锁更多货源资源</string>
 </resources>

@@ -10,6 +10,7 @@ import com.easy.easycan.base.TabEntity;
 import com.easy.easycan.publish.PublishFragment;
 import com.easy.easycan.trade.nationalcar.NationalCarSupplyFragment;
 import com.easy.easycan.trade.nationalgoods.NationalSoureceSupplyFragment;
+import com.easy.easycan.trade.subroute.source.SourceRouteCarFragment;
 import com.easy.easycan.trade.subroute.source.SourceRouteFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.SlidingTabLayout;
@@ -82,7 +83,7 @@ public class SubscribeRouteFragment extends BaseFragment {
                 return new SourceRouteFragment();
               case 1:
               default:
-                return new SourceRouteFragment();
+                return new SourceRouteCarFragment();
             }
           }
 
