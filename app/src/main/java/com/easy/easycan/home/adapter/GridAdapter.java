@@ -20,17 +20,15 @@ import java.util.List;
  */
 public class GridAdapter extends BaseAdapter {
 
-    private int[] imgs = {
-            R.drawable.looking_for_goods, R.drawable.excellent_goods, R.drawable.freight_charge, R.drawable.yiguanbao,
-            R.drawable.looking_for_car, R.drawable.manage_order, R.drawable.zhenguanchaxun, R.drawable.capacity_map
-    };
+    private int[] imgs;
    private String[] titles;
 
     private Context mContext;
 
-    public GridAdapter(Context context,String[] titles) {
+    public GridAdapter(Context context,String[] titles,int[] imgs) {
         this.mContext = context;
         this.titles = titles;
+        this.imgs = imgs;
     }
 
     @Override

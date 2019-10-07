@@ -61,6 +61,11 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
             "我要找货", "精品货源", "运费计算", "易冠宝",
             "我要找车", "运单管理", "蒸罐信息", "运力图"
     };
+
+    private int[] ints = {
+            R.drawable.looking_for_goods, R.drawable.excellent_goods, R.drawable.freight_charge, R.drawable.yiguanbao,
+            R.drawable.looking_for_car, R.drawable.manage_order, R.drawable.zhenguanchaxun, R.drawable.capacity_map
+    };
     private List<String> imgs;
     private List<String> bannerTitles;
 
@@ -112,7 +117,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
 
         gridView = view.findViewById(R.id.home_grid_view);
         gridView.setVisibility(View.VISIBLE);
-        gridView.setAdapter(new GridAdapter(getActivity(), titles));
+        gridView.setAdapter(new GridAdapter(getActivity(), titles,ints));
         gridView.setNumColumns(4);
 
         mSubscribeRoute = view.findViewById(R.id.subscribe_route_title_ll);
