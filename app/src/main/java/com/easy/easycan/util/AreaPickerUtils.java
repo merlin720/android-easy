@@ -29,7 +29,6 @@ public class AreaPickerUtils {
   public ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
   public ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
 
-
   public static AreaPickerUtils getInstance() {
     synchronized (AreaPickerUtils.class) {
       if (null == instance) {
@@ -113,7 +112,7 @@ public class AreaPickerUtils {
     showPickerView(context, null, commitListener);
   }
 
-  public void  showPickerView(Context context, OnDismissListener onDismissListener,
+  public void showPickerView(Context context, OnDismissListener onDismissListener,
       CommitListener commitListener) {// 弹出选择器
     OptionsPickerView pvOptions =
         new OptionsPickerBuilder(context, new OnOptionsSelectListener() {
@@ -132,7 +131,7 @@ public class AreaPickerUtils {
                 && options3Items.get(options1).get(options2).size() > 0 ?
                 options3Items.get(options1).get(options2).get(options3) : "";
 
-            String tx = opt1tx + opt2tx + opt3tx;
+            String tx = opt1tx + "  " + opt2tx + "  " + opt3tx;
             commitListener.click(tx);
           }
         })
@@ -152,7 +151,6 @@ public class AreaPickerUtils {
     pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
     pvOptions.show();
   }
-
 
   public interface CommitListener {
     void click(String commitStr);

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/qmui_config_color_gray_9"
+  android:orientation="vertical">
+
+  <com.qmuiteam.qmui.widget.QMUITopBar
+    android:id="@+id/publish_child_car_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:qmui_topbar_left_back_drawable_id="@drawable/left_arrow"
+    app:qmui_topbar_text_btn_color_state_list="@color/text_color"
+    app:qmui_topbar_title_color="@color/text_color" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_10"
+    android:layout_marginTop="@dimen/d_10"
+    android:layout_marginEnd="@dimen/d_10"
+    android:background="@drawable/corner_white_8"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="起始地"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_child_goods_dep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="请选择"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="卸车地"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:id="@+id/publish_child_goods_destination"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="请选择"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="重量(吨)"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <EditText
+        android:id="@+id/publish_goods_goods_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="end"
+        android:text="30"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/freight_commit"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/d_50"
+    android:layout_marginStart="@dimen/d_20"
+    android:layout_marginTop="@dimen/d_20"
+    android:layout_marginEnd="@dimen/d_20"
+    android:background="@drawable/corner_blue"
+    android:gravity="center"
+    android:text="估算费用"
+    android:textColor="@color/white"
+    android:textSize="@dimen/s_15" />
+
+  <LinearLayout
+    android:id="@+id/freight_calculation_result_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/d_10"
+    android:layout_marginTop="@dimen/d_10"
+    android:alpha="0"
+    android:layout_marginEnd="@dimen/d_10"
+    android:background="@drawable/corner_white_8"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:textSize="@dimen/s_15"
+      android:layout_marginTop="@dimen/d_5"
+      android:layout_marginBottom="@dimen/d_5"
+      android:text="河北省 石家庄市 长安区 → 黑龙江省  哈尔滨市 道里区 重量：30吨"
+      android:textColor="@color/standard_blue" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="距离(公里)"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="1593公里"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="每公里费用（元）"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="0.25 - 0.35"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginStart="@dimen/d_5"
+      android:layout_marginEnd="@dimen/d_5"
+      android:background="@color/grey_color" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/d_48"
+      android:gravity="center_vertical">
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:text="费用合计(元)"
+        android:textColor="@color/grey_color"
+        android:textSize="@dimen/s_14" />
+
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/d_10"
+        android:layout_marginEnd="@dimen/d_10"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:text="11947.50 - 16726.50"
+        android:textColor="@color/qmui_config_color_gray_8"
+        android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+  </LinearLayout>
+
+</LinearLayout>

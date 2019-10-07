@@ -105,6 +105,11 @@
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />
+    <activity
+      android:name=".home.calculation.FreightCalculationActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
   </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import com.easy.easycan.MainActivity;
 import com.easy.easycan.home.bean.HomeBannerBean;
 import com.easy.easycan.home.bean.NewsTitleBean;
+import com.easy.easycan.home.calculation.FreightCalculationActivity;
 import com.easy.easycan.home.news.NewsListActivity;
 import com.easy.easycan.home.news.bean.NewsListBean;
 import com.easy.easycan.home.presenter.HomePresenter;
@@ -50,9 +51,9 @@ import io.reactivex.functions.Consumer;
 
 /**
  * @author merlin720
- * @date 2019-09-16
- * @mail zy44638@gmail.com
- * @description 首页
+ * date 2019-09-16
+ * mail zy44638@gmail.com
+ * description 首页
  */
 public class HomeFragment extends BaseFragment implements OnBannerListener, HomeView {
 
@@ -176,6 +177,10 @@ public class HomeFragment extends BaseFragment implements OnBannerListener, Home
                         break;
                     case 1:
                         ((MainActivity) Objects.requireNonNull(getActivity())).switchToFragment(3);
+                        break;
+                    case 2:
+                        startActivity(new Intent(getActivity(), FreightCalculationActivity.class));
+
                         break;
                     case 4:
                         startActivity(new Intent(getActivity(), FindSourceCarActivity.class));
