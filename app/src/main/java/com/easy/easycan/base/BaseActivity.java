@@ -36,7 +36,7 @@ public abstract class BaseActivity extends QMUIActivity {
      * @return the boolean
      */
     protected boolean isImmersionBarEnabled() {
-        return false;
+        return true;
     }
 
     /**

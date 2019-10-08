@@ -25,6 +25,8 @@ import com.easy.easycan.home.HomeFragment;
 import com.easy.easycan.me.ProfileFragment;
 import com.easy.easycan.publish.PublishFragment;
 import com.easy.easycan.trade.TradeFloorFragment;
+import com.gyf.immersionbar.ImmersionBar;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +67,17 @@ public class MainActivity extends BaseActivity {
 
   //是否需要检测后台定位权限，设置为true时，如果用户没有给予后台定位权限会弹窗提示
   private boolean needCheckBackLocation = false;
-
+  /**
+   * 初始化沉浸式
+   */
+  protected void initImmersionBar() {
+    mImmersionBar = ImmersionBar.with(this);
+    mImmersionBar
+            .fitsSystemWindows(false)
+            .statusBarDarkFont(true, 0.2f)
+            .navigationBarWithKitkatEnable(false)
+            .init();
+  }
   @Override
   protected void initData(@Nullable Bundle savedInstanceState) {
     super.initData(savedInstanceState);

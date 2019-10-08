@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.trade.nationalgoods.NationalSoureceSupplyFragment;
+import com.gyf.immersionbar.ImmersionBar;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
 /**
@@ -24,7 +25,17 @@ public class FindSourceActivity extends BaseActivity {
   @Override protected void initData(@Nullable Bundle savedInstanceState) {
     super.initData(savedInstanceState);
   }
-
+  /**
+   * 初始化沉浸式
+   */
+  protected void initImmersionBar() {
+    mImmersionBar = ImmersionBar.with(this);
+    mImmersionBar
+            .fitsSystemWindows(false)
+            .statusBarDarkFont(true, 0.2f)
+            .navigationBarWithKitkatEnable(false)
+            .init();
+  }
   @Override protected void initView() {
     initTopBar();
     NationalSoureceSupplyFragment fragment = new NationalSoureceSupplyFragment();

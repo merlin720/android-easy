@@ -62,7 +62,7 @@ public class ProfileFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
         initTopBar(view);
-        initStatusBar();
+
 
         gridView = view.findViewById(R.id.profile_grid_view);
         gridView.setVisibility(View.VISIBLE);
@@ -92,10 +92,11 @@ public class ProfileFragment extends BaseFragment {
                 });
     }
 
-    private void initStatusBar() {
+    @Override
+    protected void initImmersionBar() {
         mImmersionBar = ImmersionBar.with(getActivity());
         mImmersionBar
-                .fitsSystemWindows(false)
+                .fitsSystemWindows(true)
                 .statusBarColor(R.color.standard_blue)
                 .statusBarDarkFont(false, 0.2f)
                 .navigationBarWithKitkatEnable(false)
