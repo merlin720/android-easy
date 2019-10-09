@@ -13,7 +13,7 @@ import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.home.calculation.FreightCalculationActivity;
 import com.easy.easycan.home.stramer.StreamerInformationActivity;
-import com.easy.easycan.me.managecar.setting.SettingActivity;
+import com.easy.easycan.me.setting.SettingActivity;
 import com.easy.easycan.me.source.FindSourceActivity;
 import com.easy.easycan.me.sourcecar.FindSourceCarActivity;
 import com.easy.easycan.view.InnerGridView;

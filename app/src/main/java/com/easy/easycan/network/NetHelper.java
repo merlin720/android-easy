@@ -22,7 +22,7 @@ public class NetHelper {
      *
      * @param url
      */
-    public static void get(String url, Map<String, String> param, JSONObjectRequestListener listener) {
+    public static void get(String url, Map<String, String> param, JSONObjectRequestListener jsonObjectRequestListener) {
         AndroidNetworking.get(url)
                 .addQueryParameter(param)
                 .addQueryParameter("limit", "3")
@@ -30,7 +30,7 @@ public class NetHelper {
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsJSONObject(listener);
+                .getAsJSONObject(jsonObjectRequestListener);
     }
 
     /**

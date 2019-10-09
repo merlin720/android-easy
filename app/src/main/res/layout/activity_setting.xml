@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/d_10"
+            android:layout_marginStart="@dimen/d_20"
             android:layout_weight="1"
             android:text="头像"
             android:textColor="@color/text_color"
@@ -75,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/d_48"
                 android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="@dimen/d_5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/d_20"
                 android:paddingEnd="@dimen/d_10"
@@ -114,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/d_48"
                 android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="@dimen/d_5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/d_20"
                 android:paddingEnd="@dimen/d_10"
@@ -123,6 +125,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/setting_change_pwd_tv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d_48"
             android:drawableEnd="@drawable/arrow_right"
@@ -152,6 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/d_48"
                 android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="@dimen/d_5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/d_20"
                 android:paddingEnd="@dimen/d_10"

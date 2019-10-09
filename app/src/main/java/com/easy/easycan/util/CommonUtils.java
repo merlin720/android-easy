@@ -31,6 +31,8 @@ public class CommonUtils {
     //蒸罐信息?page=1&pageSize=20
     public static final String HOME_STREAMER_INFORMATION = IP+"/api/zhengguan";
 
+    public static final String CHANGE_PASSWORD = IP+"/api/user/password";
+
     //
 
 

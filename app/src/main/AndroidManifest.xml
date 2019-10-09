@@ -118,7 +118,12 @@
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />
     <activity
-      android:name=".me.managecar.setting.SettingActivity"
+      android:name=".me.setting.SettingActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
+ <activity
+      android:name=".login.changepwd.ChangePassWordActivity"
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />

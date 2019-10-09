@@ -44,4 +44,6 @@
 
     <string name="profile">我的</string>
     <string name="setting">设置</string>
+    <string name="done">完成</string>
+    <string name="change_password_title">修改密码</string>
 </resources>
