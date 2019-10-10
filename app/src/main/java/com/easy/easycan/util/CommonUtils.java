@@ -36,9 +36,11 @@ public class CommonUtils {
 
     public static final String CHANGE_PASSWORD = IP+"/api/user/password";
 
-    public static final String LOGIN = IP+"/api/user/login ";
+    public static final String LOGIN = IP+"/api/user/login";
 
-    public static final String LOGOUT = IP+"/api/user/logout ";
+    public static final String LOGOUT = IP+"/api/user/logout";
+
+    public static final String GET_PROFILE = IP+"/api/user/index";
 
     //
 

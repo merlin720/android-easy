@@ -9,5 +9,6 @@ import com.easy.easycan.base.BaseView;
  * description
  */
 public interface SettingView extends BaseView {
-
+   void logoutSuccess();
+   void logoutError();
 }

@@ -1,10 +1,9 @@
 package com.easy.easycan.login;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,13 +12,15 @@ import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.login.bean.LoginBean;
-import com.easy.easycan.login.changepwd.ChangePassWordActivity;
+import com.easy.easycan.login.bean.LoginEvent;
 import com.easy.easycan.login.presenter.LoginPresenter;
 import com.easy.easycan.login.view.LoginView;
-import com.easy.easycan.me.setting.updateimg.UpdateHeadImgActivity;
 import com.easy.easycan.util.CommonUtils;
+import com.hjq.toast.ToastUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.concurrent.TimeUnit;
 
@@ -84,7 +85,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
                     public void accept(Object o) throws Exception {
                         String phone = userNameEt.getText().toString().trim();
                         String password = passwordEt.getText().toString().trim();
-
+                        if (TextUtils.isEmpty(phone)){
+                            ToastUtils.show("请输入手机号");
+                            return;
+                        }
                         presenter.login(phone, password, "password");
                     }
                 });
@@ -93,6 +97,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void loginSuccess(LoginBean model) {
-            SPUtils.getInstance().put(CommonUtils.accessToken, model.getAccessToken());
+        SPUtils.getInstance().put(CommonUtils.accessToken, model.getAccessToken());
+        finish();
+        EventBus.getDefault().post(LoginEvent.class);
     }
 }

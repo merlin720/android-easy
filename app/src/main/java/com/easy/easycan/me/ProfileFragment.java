@@ -1,14 +1,12 @@
 package com.easy.easycan.me;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import com.easy.easycan.MainActivity;
 import com.easy.easycan.R;
@@ -17,16 +15,24 @@ import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.home.calculation.FreightCalculationActivity;
 import com.easy.easycan.home.stramer.StreamerInformationActivity;
 import com.easy.easycan.login.LoginActivity;
+import com.easy.easycan.login.bean.LoginEvent;
+import com.easy.easycan.me.model.ProfileModel;
+import com.easy.easycan.me.presenter.ProfilePresenter;
 import com.easy.easycan.me.setting.SettingActivity;
 import com.easy.easycan.me.source.FindSourceActivity;
 import com.easy.easycan.me.sourcecar.FindSourceCarActivity;
+import com.easy.easycan.me.view.ProfileView;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.util.img.EasyGlide;
 import com.easy.easycan.view.InnerGridView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -40,9 +46,10 @@ import io.reactivex.functions.Consumer;
  * mail zy44638@gmail.com
  * description 我的
  */
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseFragment implements ProfileView {
     private QMUITopBar mTopBar;
     protected ImmersionBar mImmersionBar;
+    private ProfilePresenter presenter;
     /**
      * 8个tab
      */
@@ -95,7 +102,7 @@ public class ProfileFragment extends BaseFragment {
                     public void accept(Object o) throws Exception {
                         if (CommonUtils.isLogin()) {
                             startActivity(new Intent(getActivity(), SettingActivity.class));
-                        }else {
+                        } else {
                             startActivity(new Intent(getActivity(), LoginActivity.class));
                         }
                     }
@@ -167,4 +174,33 @@ public class ProfileFragment extends BaseFragment {
             }
         });
     }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        presenter = new ProfilePresenter(this);
+        getData();
+    }
+
+    private void getData() {
+        presenter.getData();
+    }
+
+    @Override
+    public void showData(ProfileModel model) {
+        EasyGlide.loadImage(getActivity(),model.getAvatar(),headerImg,R.drawable.com_icon_default_head);
+    }
+
+    @Override
+    protected boolean isRegisterEventBus() {
+        return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void loginSuccess(LoginEvent loginEvent) {
+        if (loginEvent.LOGIN_SUCCESS == loginEvent.code) {
+            getData();
+        }
+    }
 }
+

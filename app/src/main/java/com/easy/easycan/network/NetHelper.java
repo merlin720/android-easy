@@ -1,8 +1,10 @@
 package com.easy.easycan.network;
 
 import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.ANRequest;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.util.CommonUtils;
 
@@ -35,15 +37,27 @@ public class NetHelper {
                 .getAsJSONObject(jsonObjectRequestListener);
     }
 
+    public static ANRequest get(String url, Map<String, String> param) {
+        return AndroidNetworking.get(url)
+                .addQueryParameter(param)
+                .addQueryParameter("limit", "3")
+                .addHeaders("x-api-key", SPUtils.getInstance().getString(CommonUtils.accessToken))
+                .setTag(TAG)
+                .setPriority(Priority.MEDIUM)
+                .build();
+
+    }
+
     /**
      * "https://fierce-cove-29863.herokuapp.com/createAnUser"
      * "firstname", "Amit"
-     *      .addBodyParameter("lastname", "Shekhar")
+     * .addBodyParameter("lastname", "Shekhar")
+     *
      * @param url
      * @param param
      * @param jsonObjectRequestListener
      */
-    public static void post(String url,Map<String,String> param,JSONObjectRequestListener jsonObjectRequestListener){
+    public static void post(String url, Map<String, String> param, JSONObjectRequestListener jsonObjectRequestListener) {
         AndroidNetworking.post(url)
                 .addBodyParameter(param)
                 .setTag(TAG)

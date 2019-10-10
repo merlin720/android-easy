@@ -8,12 +8,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.login.changepwd.ChangePassWordActivity;
 import com.easy.easycan.me.setting.presenter.SettingPresenter;
 import com.easy.easycan.me.setting.updateimg.UpdateHeadImgActivity;
 import com.easy.easycan.me.setting.view.SettingView;
+import com.easy.easycan.util.CommonUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
@@ -102,5 +104,17 @@ public class SettingActivity extends BaseActivity implements SettingView {
 
     private void logout() {
         presenter.logout();
+    }
+
+    @Override
+    public void logoutSuccess() {
+        SPUtils.getInstance().put(CommonUtils.accessToken, "");
+        finish();
+    }
+
+    @Override
+    public void logoutError(){
+        SPUtils.getInstance().put(CommonUtils.accessToken, "");
+        finish();
     }
 }

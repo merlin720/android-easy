@@ -14,6 +14,8 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.qmuiteam.qmui.arch.QMUIFragment;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * @author merlin720
  * @date 2019-09-16
@@ -23,7 +25,13 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 public abstract class BaseFragment extends QMUIFragment {
 
     protected ImmersionBar mImmersionBar;
-
+    /**
+     * 是否注册EventBus
+     * 默认不注册
+     */
+    protected boolean isRegisterEventBus() {
+        return false;
+    }
     /**
      * 是否在Activity使用沉浸式
      *
@@ -36,7 +44,9 @@ public abstract class BaseFragment extends QMUIFragment {
     @Override
     protected View onCreateView() {
         View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(), null);
-
+        if (isRegisterEventBus()) {
+            EventBus.getDefault().register(this);
+        }
         initView(view);
         initData();
         setListener();
@@ -82,6 +92,14 @@ public abstract class BaseFragment extends QMUIFragment {
     public Object onLastFragmentFinish() {
         return new HomeFragment();
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     protected void goToWebExplorer(@NonNull String url, @Nullable String title) {
