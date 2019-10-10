@@ -115,6 +115,10 @@ dependencies {
     implementation dep.agentweb
     /*时间选择*/
     implementation dep.picker_view
+    /*图片选择*/
+    implementation dep.picker_picture
+    /*阿里云*/
+    api dep.aliyun
     //3D地图so及jar  高德
     implementation 'com.amap.api:3dmap:6.4.0'
     //定位功能  高德

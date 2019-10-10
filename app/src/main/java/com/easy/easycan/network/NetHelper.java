@@ -3,6 +3,8 @@ package com.easy.easycan.network;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.blankj.utilcode.util.SPUtils;
+import com.easy.easycan.util.CommonUtils;
 
 import java.util.Map;
 
@@ -26,7 +28,7 @@ public class NetHelper {
         AndroidNetworking.get(url)
                 .addQueryParameter(param)
                 .addQueryParameter("limit", "3")
-                .addHeaders("token", "1234")
+                .addHeaders("x-api-key", SPUtils.getInstance().getString(CommonUtils.accessToken))
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -39,14 +41,14 @@ public class NetHelper {
      *      .addBodyParameter("lastname", "Shekhar")
      * @param url
      * @param param
-     * @param listener
+     * @param jsonObjectRequestListener
      */
-    public static void post(String url,Map<String,String> param,JSONObjectRequestListener listener){
+    public static void post(String url,Map<String,String> param,JSONObjectRequestListener jsonObjectRequestListener){
         AndroidNetworking.post(url)
                 .addBodyParameter(param)
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsJSONObject(listener);
+                .getAsJSONObject(jsonObjectRequestListener);
     }
 }

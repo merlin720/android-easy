@@ -45,7 +45,7 @@ public class PickPhotoDialog extends Dialog {
 
         private ObjectAnimator animator;
 
-        public PickPhotoDialog create(final int index) {
+        public PickPhotoDialog create(final int index,ResultPhoto resultPhoto) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             final PickPhotoDialog dialog = new PickPhotoDialog(context, R.style.Common_Theme_Dialog);
             View layout = inflater.inflate(R.layout.choose_pic_camera, null);
@@ -66,9 +66,15 @@ public class PickPhotoDialog extends Dialog {
 
             ClickUtils.click(takePhotoTv, () -> {
                 dialog.dismiss();
+                if (null != resultPhoto) {
+                    resultPhoto.takePhoto();
+                }
             });
             ClickUtils.click(pickPhoto, () -> {
                 dialog.dismiss();
+                if (null != resultPhoto) {
+                    resultPhoto.pickPhoto();
+                }
             });
 
             ClickUtils.click(button, dialog::dismiss);
@@ -76,6 +82,11 @@ public class PickPhotoDialog extends Dialog {
 
             return dialog;
         }
+    }
+
+    public interface ResultPhoto{
+        void takePhoto();
+        void pickPhoto();
     }
 
 }

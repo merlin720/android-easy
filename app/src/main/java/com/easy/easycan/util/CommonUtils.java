@@ -1,7 +1,10 @@
 package com.easy.easycan.util;
 
+import android.text.TextUtils;
+
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.services.core.LatLonPoint;
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.BuildConfig;
 
 
@@ -33,8 +36,13 @@ public class CommonUtils {
 
     public static final String CHANGE_PASSWORD = IP+"/api/user/password";
 
+    public static final String LOGIN = IP+"/api/user/login ";
+
+    public static final String LOGOUT = IP+"/api/user/logout ";
+
     //
 
+    public static final String accessToken = "access_token";
 
     public static final int TYPE_TIMELINE_PUBLIC = 1;
     public static final int TYPE_TIMELINE_FRIEND = 2;
@@ -76,5 +84,9 @@ public class CommonUtils {
      */
     public static LatLng convertToLatLng(LatLonPoint latLonPoint) {
         return new LatLng(latLonPoint.getLatitude(), latLonPoint.getLongitude());
+    }
+
+    public static boolean isLogin(){
+        return !TextUtils.isEmpty(SPUtils.getInstance().getString(CommonUtils.accessToken));
     }
 }

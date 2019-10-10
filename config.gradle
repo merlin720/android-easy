@@ -1,50 +1,52 @@
 ext {
-  appcompatVersion= '1.1.0-beta01'
-  materialVersion='1.1.0-alpha07'
-  annotationVersion='1.1.0-beta01'
-  butterknifeVersion = '10.2.0'
-  constraintLayoutVersion = "1.1.3"
-  android = [
-      compileSdkVersion: 29,
-      targetSdkVersion: 29,
-      appid: "com.easy.easycan",
-      minSdkVersion: 19,
-      buildToolsVersion: "29.0.2",
+    appcompatVersion = '1.1.0-beta01'
+    materialVersion = '1.1.0-alpha07'
+    annotationVersion = '1.1.0-beta01'
+    butterknifeVersion = '10.2.0'
+    constraintLayoutVersion = "1.1.3"
+    android = [
+            compileSdkVersion: 29,
+            targetSdkVersion : 29,
+            appid            : "com.easy.easycan",
+            minSdkVersion    : 19,
+            buildToolsVersion: "29.0.2",
 
-  ]
-  dependencies = [recyclerview: 'com.android.support:recyclerview-v7:27.1.1',
-      appcompat_v7: 'com.android.support:appcompat-v7:27.1.1',
-      appcompat_v4: 'com.android.support:support-v4:27.1.1',
-      gson: 'com.google.code.gson:gson:2.8.5',
-      brvah: 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50',
-      espresso: 'com.android.support.test.espresso:espresso-core:3.0.2',
-      constraint: 'com.android.support.constraint:constraint-layout:1.1.3',
-      /**事件总线程*/
-      "eventbus": 'org.greenrobot:eventbus:3.1.1',
-      /**基础依赖包，必须要依赖*/
-      immersionbar: 'com.gyf.immersionbar:immersionbar:3.0.0',
-      // fragment快速实现（可选）
-      immersionbarfragment: 'com.gyf.immersionbar:immersionbar-components:3.0.0',
-      rxjava: 'io.reactivex.rxjava3:rxjava:3.0.0-RC0',
-      "rxandroid": 'io.reactivex.rxjava2:rxandroid:2.0.1',
-      "rxbinding2": 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
-      //腾讯ui开发库
+    ]
+    dependencies = [recyclerview                    : 'com.android.support:recyclerview-v7:27.1.1',
+                    appcompat_v7                    : 'com.android.support:appcompat-v7:27.1.1',
+                    appcompat_v4                    : 'com.android.support:support-v4:27.1.1',
+                    gson                            : 'com.google.code.gson:gson:2.8.5',
+                    brvah                           : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50',
+                    espresso                        : 'com.android.support.test.espresso:espresso-core:3.0.2',
+                    constraint                      : 'com.android.support.constraint:constraint-layout:1.1.3',
+                    /**事件总线程*/
+                    "eventbus"                      : 'org.greenrobot:eventbus:3.1.1',
+                    /**基础依赖包，必须要依赖*/
+                    immersionbar                    : 'com.gyf.immersionbar:immersionbar:3.0.0',
+                    // fragment快速实现（可选）
+                    immersionbarfragment            : 'com.gyf.immersionbar:immersionbar-components:3.0.0',
+                    rxjava                          : 'io.reactivex.rxjava3:rxjava:3.0.0-RC0',
+                    "rxandroid"                     : 'io.reactivex.rxjava2:rxandroid:2.0.1',
+                    "rxbinding2"                    : 'com.jakewharton.rxbinding2:rxbinding:2.0.0',
+                    //腾讯ui开发库
 
-      'qmuiarch': 'com.qmuiteam:arch:0.6.1',
-      //方法数
-      'multidex': 'com.android.support:multidex:1.0.3',
-      "rxjava2": 'io.reactivex.rxjava2:rxjava:2.2.3',
-      "okhttp3": 'com.squareup.okhttp3:okhttp:3.11.0',
-      'glide': 'com.github.bumptech.glide:glide:4.9.0',
-      'SmartRefreshLayout': 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0',
-      'networking': 'com.amitshekhar.android:android-networking:1.0.2',
-      /**权限*/
-      'permissionsdispatcher': 'org.permissionsdispatcher:permissionsdispatcher:4.5.0',
-      'permissionsdispatcherProcessor': 'org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0',
-      'banner': 'com.youth.banner:banner:1.4.10',
-      'toast': 'com.hjq:toast:8.0',
-      'baseadapter': 'com.zhy:base-adapter:3.0.3',
-      "agentweb": 'com.just.agentweb:agentweb:4.1.2',
-        'picker_view':'com.contrarywind:Android-PickerView:4.1.8',
-  ]
+                    'qmuiarch'                      : 'com.qmuiteam:arch:0.6.1',
+                    //方法数
+                    'multidex'                      : 'com.android.support:multidex:1.0.3',
+                    "rxjava2"                       : 'io.reactivex.rxjava2:rxjava:2.2.3',
+                    "okhttp3"                       : 'com.squareup.okhttp3:okhttp:3.11.0',
+                    'glide'                         : 'com.github.bumptech.glide:glide:4.9.0',
+                    'SmartRefreshLayout'            : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0',
+                    'networking'                    : 'com.amitshekhar.android:android-networking:1.0.2',
+                    /**权限*/
+                    'permissionsdispatcher'         : 'org.permissionsdispatcher:permissionsdispatcher:4.5.0',
+                    'permissionsdispatcherProcessor': 'org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0',
+                    'banner'                        : 'com.youth.banner:banner:1.4.10',
+                    'toast'                         : 'com.hjq:toast:8.0',
+                    'baseadapter'                   : 'com.zhy:base-adapter:3.0.3',
+                    "agentweb"                      : 'com.just.agentweb:agentweb:4.1.2',
+                    'picker_view'                   : 'com.contrarywind:Android-PickerView:4.1.8',
+                    'picker_picture'                : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.5',
+                    'aliyun'                        : 'com.aliyun.dpa:oss-android-sdk:+',
+    ]
 }

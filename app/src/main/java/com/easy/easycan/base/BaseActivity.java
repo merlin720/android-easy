@@ -2,12 +2,10 @@ package com.easy.easycan.base;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.easy.easycan.R;
 import com.easy.easycan.util.LogUtils;
@@ -15,7 +13,6 @@ import com.easy.easycan.view.CustomTitleBar;
 import com.gyf.immersionbar.ImmersionBar;
 import com.qmuiteam.qmui.arch.QMUIActivity;
 
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import org.greenrobot.eventbus.EventBus;
 
 
@@ -54,7 +51,7 @@ public abstract class BaseActivity extends QMUIActivity {
         if (isRegisterEventBus()) {
             EventBus.getDefault().register(this);
         }
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
+//        QMUIStatusBarHelper.translucent(this, ContextCompat.getColor(this,R.color.transparent));
         LogUtils.e("===当前activity：(" + this.getClass().getSimpleName() + ".java:1)");
         mRootView = LayoutInflater.from(this).inflate(setLayoutId(), null);
         setContentView(mRootView);

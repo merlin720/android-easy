@@ -48,5 +48,6 @@
     <string name="my_head">我的头像</string>
     <string name="done">完成</string>
     <string name="commit">提交</string>
+    <string name="login">登录</string>
     <string name="change_password_title">修改密码</string>
 </resources>

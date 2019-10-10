@@ -1,11 +1,14 @@
 package com.easy.easycan.me;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.easy.easycan.MainActivity;
 import com.easy.easycan.R;
@@ -13,9 +16,11 @@ import com.easy.easycan.base.BaseFragment;
 import com.easy.easycan.home.adapter.GridAdapter;
 import com.easy.easycan.home.calculation.FreightCalculationActivity;
 import com.easy.easycan.home.stramer.StreamerInformationActivity;
+import com.easy.easycan.login.LoginActivity;
 import com.easy.easycan.me.setting.SettingActivity;
 import com.easy.easycan.me.source.FindSourceActivity;
 import com.easy.easycan.me.sourcecar.FindSourceCarActivity;
+import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.view.InnerGridView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -74,6 +79,7 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void initTopBar(View view) {
+
         mTopBar = view.findViewById(R.id.profile_title);
         mTopBar.setVisibility(View.VISIBLE);
         mTopBar.setTitle(R.string.profile);
@@ -87,13 +93,18 @@ public class ProfileFragment extends BaseFragment {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        startActivity(new Intent(getActivity(), SettingActivity.class));
+                        if (CommonUtils.isLogin()) {
+                            startActivity(new Intent(getActivity(), SettingActivity.class));
+                        }else {
+                            startActivity(new Intent(getActivity(), LoginActivity.class));
+                        }
                     }
                 });
     }
 
     @Override
     protected void initImmersionBar() {
+
         mImmersionBar = ImmersionBar.with(getActivity());
         mImmersionBar
                 .fitsSystemWindows(true)

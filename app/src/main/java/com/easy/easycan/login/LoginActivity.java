@@ -1,19 +1,23 @@
-package com.easy.easycan.me.setting;
+package com.easy.easycan.login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
+import com.easy.easycan.login.bean.LoginBean;
 import com.easy.easycan.login.changepwd.ChangePassWordActivity;
-import com.easy.easycan.me.setting.presenter.SettingPresenter;
+import com.easy.easycan.login.presenter.LoginPresenter;
+import com.easy.easycan.login.view.LoginView;
 import com.easy.easycan.me.setting.updateimg.UpdateHeadImgActivity;
-import com.easy.easycan.me.setting.view.SettingView;
+import com.easy.easycan.util.CommonUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
@@ -27,35 +31,34 @@ import io.reactivex.functions.Consumer;
  * date 2019年09月21日
  * desc 我要找货。
  */
-public class SettingActivity extends BaseActivity implements SettingView {
+public class LoginActivity extends BaseActivity implements LoginView {
 
     private QMUITopBar mTopBar;
 
-    private TextView changePwdTv;
+    private EditText userNameEt;
+    private EditText passwordEt;
 
-    private LinearLayout headLinear;
+    private TextView commit;
 
-    private LinearLayout logoutLl;
-    private SettingPresenter presenter;
-
+    private LoginPresenter presenter;
 
     @Override
     protected int setLayoutId() {
-        return R.layout.activity_setting;
+        return R.layout.activity_login;
     }
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        presenter = new SettingPresenter(this);
+        presenter = new LoginPresenter(this);
     }
 
     @Override
     protected void initView() {
         initTopBar();
-        changePwdTv = findViewById(R.id.setting_change_pwd_tv);
-        headLinear = findViewById(R.id.setting_head_ll);
-        logoutLl = findViewById(R.id.setting_logout);
+        userNameEt = findViewById(R.id.login_phone_et);
+        passwordEt = findViewById(R.id.login_pass_et);
+        commit = findViewById(R.id.login_commit);
     }
 
     private void initTopBar() {
@@ -74,33 +77,22 @@ public class SettingActivity extends BaseActivity implements SettingView {
 
     @Override
     protected void setListener() {
-        Disposable disposable = RxView.clicks(changePwdTv)
+        Disposable disposable = RxView.clicks(commit)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        startActivity(new Intent(SettingActivity.this, ChangePassWordActivity.class));
+                        String phone = userNameEt.getText().toString().trim();
+                        String password = passwordEt.getText().toString().trim();
+
+                        presenter.login(phone, password, "password");
                     }
                 });
-        Disposable disposable1 = RxView.clicks(headLinear)
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
-                .subscribe(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object o) throws Exception {
-                        startActivity(new Intent(SettingActivity.this, UpdateHeadImgActivity.class));
-                    }
-                });
-        Disposable disposable2 = RxView.clicks(logoutLl)
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
-                .subscribe(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object o) throws Exception {
-                        logout();
-                    }
-                });
+
     }
 
-    private void logout() {
-        presenter.logout();
+    @Override
+    public void loginSuccess(LoginBean model) {
+            SPUtils.getInstance().put(CommonUtils.accessToken, model.getAccessToken());
     }
 }
