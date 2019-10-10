@@ -127,6 +127,11 @@
       android:configChanges="orientation|keyboardHidden|screenSize"
       android:screenOrientation="portrait"
       android:theme="@style/Theme.Transparent" />
+    <activity
+      android:name=".me.setting.updateimg.UpdateHeadImgActivity"
+      android:configChanges="orientation|keyboardHidden|screenSize"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.Transparent" />
 
 
   </application>

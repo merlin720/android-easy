@@ -40,10 +40,13 @@
 
     <string name="publish_protocol">我已阅读并同意《道路运输协议》等协议</string>
     <string name="source_route_add_more_tips">添加长跑路线路，解锁更多货源资源</string>
-
+    <string name="upload_pic_choose_from_pic">从手机相册选择</string>
+    <string name="upload_pic_take_photo">拍照</string>
 
     <string name="profile">我的</string>
     <string name="setting">设置</string>
+    <string name="my_head">我的头像</string>
     <string name="done">完成</string>
+    <string name="commit">提交</string>
     <string name="change_password_title">修改密码</string>
 </resources>
