@@ -18,4 +18,11 @@ public class ProfileBaseModel extends BaseModel {
     public void setData(ProfileModel data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "ProfileBaseModel{" +
+                "data=" + data +
+                '}';
+    }
 }

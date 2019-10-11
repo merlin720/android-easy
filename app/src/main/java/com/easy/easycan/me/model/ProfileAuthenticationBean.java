@@ -8,7 +8,7 @@ import java.io.Serializable;
  * email zy44638@gmail.com
  * description
  */
-public class ProfileCompanyBean implements Serializable {
+public class ProfileAuthenticationBean implements Serializable {
     private String id;
     private String ref_id;
     private String user_id;
@@ -16,6 +16,21 @@ public class ProfileCompanyBean implements Serializable {
     private String amount;
     private String name;
     private String real_name;
+    private String identity_no;
+    private String identity_image;
+    private String identity_back_image;
+    private String face_image;
+    private String company_name;
+    private String company_business_license_no;
+    private String company_business_license_image;
+    private String company_authorization_certificate_image;
+    private String company_dangerous_license_image;
+    private String status;
+    private String reason;
+    private String bank_type;
+    private String bank_name;
+    private String bank_account;
+    private String add_time;
 
     public String getRef_id() {
         return ref_id;
@@ -81,6 +96,14 @@ public class ProfileCompanyBean implements Serializable {
         this.identity_image = identity_image;
     }
 
+    public String getIdentity_back_image() {
+        return identity_back_image;
+    }
+
+    public void setIdentity_back_image(String identity_back_image) {
+        this.identity_back_image = identity_back_image;
+    }
+
     public String getFace_image() {
         return face_image;
     }
@@ -111,6 +134,14 @@ public class ProfileCompanyBean implements Serializable {
 
     public void setCompany_business_license_image(String company_business_license_image) {
         this.company_business_license_image = company_business_license_image;
+    }
+
+    public String getCompany_authorization_certificate_image() {
+        return company_authorization_certificate_image;
+    }
+
+    public void setCompany_authorization_certificate_image(String company_authorization_certificate_image) {
+        this.company_authorization_certificate_image = company_authorization_certificate_image;
     }
 
     public String getCompany_dangerous_license_image() {
@@ -153,19 +184,6 @@ public class ProfileCompanyBean implements Serializable {
         this.update_time = update_time;
     }
 
-    private String identity_no;
-    private String identity_image;
-    private String face_image;
-    private String company_name;
-    private String company_business_license_no;
-    private String company_business_license_image;
-    private String company_dangerous_license_image;
-    private String status;
-    private String reason;
-    private String bank_type;
-    private String bank_name;
-    private String bank_account;
-    private String add_time;
     private String update_time;
 
     public String getId() {

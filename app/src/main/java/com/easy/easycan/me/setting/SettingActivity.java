@@ -3,6 +3,7 @@ package com.easy.easycan.me.setting;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.easy.easycan.me.setting.presenter.SettingPresenter;
 import com.easy.easycan.me.setting.updateimg.UpdateHeadImgActivity;
 import com.easy.easycan.me.setting.view.SettingView;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.util.img.EasyGlide;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
@@ -38,6 +40,9 @@ public class SettingActivity extends BaseActivity implements SettingView {
     private LinearLayout headLinear;
 
     private LinearLayout logoutLl;
+
+    private ImageView head;
+
     private SettingPresenter presenter;
 
 
@@ -58,6 +63,8 @@ public class SettingActivity extends BaseActivity implements SettingView {
         changePwdTv = findViewById(R.id.setting_change_pwd_tv);
         headLinear = findViewById(R.id.setting_head_ll);
         logoutLl = findViewById(R.id.setting_logout);
+        head = findViewById(R.id.setting_head_img);
+        EasyGlide.loadImage(SettingActivity.this, SPUtils.getInstance().getString(CommonUtils.AVATAR),head);
     }
 
     private void initTopBar() {
@@ -109,12 +116,14 @@ public class SettingActivity extends BaseActivity implements SettingView {
     @Override
     public void logoutSuccess() {
         SPUtils.getInstance().put(CommonUtils.accessToken, "");
+        SPUtils.getInstance().put(CommonUtils.AVATAR, "");
         finish();
     }
 
     @Override
     public void logoutError(){
         SPUtils.getInstance().put(CommonUtils.accessToken, "");
+        SPUtils.getInstance().put(CommonUtils.AVATAR, "");
         finish();
     }
 }

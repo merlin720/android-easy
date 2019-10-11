@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity {
   protected void initView() {
     initFragment();
     mRadioGroup = findViewById(R.id.radio_group_button);
+    initImmersionBar();
   }
 
   //是否需要检测后台定位权限，设置为true时，如果用户没有给予后台定位权限会弹窗提示
@@ -343,5 +344,10 @@ public class MainActivity extends BaseActivity {
       ((RadioButton)mRadioGroup.getChildAt(index)).setChecked(true);
 
     }
+  }
+
+  @Override
+  protected boolean translucentFull() {
+    return true;
   }
 }

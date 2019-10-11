@@ -99,6 +99,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void loginSuccess(LoginBean model) {
         SPUtils.getInstance().put(CommonUtils.accessToken, model.getAccessToken());
         finish();
-        EventBus.getDefault().post(LoginEvent.class);
+        EventBus.getDefault().post(new LoginEvent(0));
+    }
+
+    @Override
+    public void loginFail(String msg) {
+        ToastUtils.show(msg);
     }
 }

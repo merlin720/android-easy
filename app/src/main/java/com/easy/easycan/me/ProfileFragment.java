@@ -1,6 +1,7 @@
 package com.easy.easycan.me;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.MainActivity;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseFragment;
@@ -23,11 +27,13 @@ import com.easy.easycan.me.source.FindSourceActivity;
 import com.easy.easycan.me.sourcecar.FindSourceCarActivity;
 import com.easy.easycan.me.view.ProfileView;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.util.LogUtils;
 import com.easy.easycan.util.img.EasyGlide;
 import com.easy.easycan.view.InnerGridView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 
@@ -74,8 +80,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
     @Override
     protected void initView(View view) {
         initTopBar(view);
-
-
+        QMUIStatusBarHelper.setStatusBarLightMode(getActivity());
         gridView = view.findViewById(R.id.profile_grid_view);
         gridView.setVisibility(View.VISIBLE);
         gridView.setAdapter(new GridAdapter(getActivity(), titles, imgs));
@@ -83,6 +88,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         headerImg = view.findViewById(R.id.profile_head_img);
         checkInfoTv = view.findViewById(R.id.profile_head_check_info);
         bottomSettingTv = view.findViewById(R.id.profile_bottom_setting);
+        initImmersionBar();
     }
 
     private void initTopBar(View view) {
@@ -100,11 +106,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        if (CommonUtils.isLogin()) {
-                            startActivity(new Intent(getActivity(), SettingActivity.class));
-                        } else {
-                            startActivity(new Intent(getActivity(), LoginActivity.class));
-                        }
+                        startSetting();
                     }
                 });
     }
@@ -128,7 +130,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        startActivity(new Intent(getActivity(), SettingActivity.class));
+                        startSetting();
                     }
                 });
         Disposable disposable1 = RxView.clicks(checkInfoTv)
@@ -136,7 +138,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        startActivity(new Intent(getActivity(), SettingActivity.class));
+                        startSetting();
                     }
                 });
         Disposable disposable2 = RxView.clicks(bottomSettingTv)
@@ -144,7 +146,7 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
-                        startActivity(new Intent(getActivity(), SettingActivity.class));
+                        startSetting();
                     }
                 });
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -175,11 +177,24 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
         });
     }
 
+    /**
+     * 启动设置界面判断有没有登录 如果没登录就跳转到登录界面  如果登录了就跳转到设置界面
+     */
+    private void startSetting() {
+        if (CommonUtils.isLogin()) {
+            startActivity(new Intent(getActivity(), SettingActivity.class));
+        } else {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
+    }
+
     @Override
     protected void initData() {
         super.initData();
         presenter = new ProfilePresenter(this);
-        getData();
+        if (CommonUtils.isLogin()) {
+            getData();
+        }
     }
 
     private void getData() {
@@ -188,7 +203,9 @@ public class ProfileFragment extends BaseFragment implements ProfileView {
 
     @Override
     public void showData(ProfileModel model) {
-        EasyGlide.loadImage(getActivity(),model.getAvatar(),headerImg,R.drawable.com_icon_default_head);
+        SPUtils.getInstance().put(CommonUtils.AVATAR, model.getAvatar());
+        EasyGlide.loadCircleWithBorderImage(getActivity(), model.getAvatar(), 2,
+                ContextCompat.getColor(getActivity(), R.color.standard_blue), headerImg, R.drawable.com_icon_default_head);
     }
 
     @Override

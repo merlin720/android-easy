@@ -45,6 +45,7 @@ public class CommonUtils {
     //
 
     public static final String accessToken = "access_token";
+    public static final String AVATAR = "avatar";
 
     public static final int TYPE_TIMELINE_PUBLIC = 1;
     public static final int TYPE_TIMELINE_FRIEND = 2;

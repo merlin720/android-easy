@@ -29,7 +29,6 @@ public class NetHelper {
     public static void get(String url, Map<String, String> param, JSONObjectRequestListener jsonObjectRequestListener) {
         AndroidNetworking.get(url)
                 .addQueryParameter(param)
-                .addQueryParameter("limit", "3")
                 .addHeaders("x-api-key", SPUtils.getInstance().getString(CommonUtils.accessToken))
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)
@@ -40,7 +39,6 @@ public class NetHelper {
     public static ANRequest get(String url, Map<String, String> param) {
         return AndroidNetworking.get(url)
                 .addQueryParameter(param)
-                .addQueryParameter("limit", "3")
                 .addHeaders("x-api-key", SPUtils.getInstance().getString(CommonUtils.accessToken))
                 .setTag(TAG)
                 .setPriority(Priority.MEDIUM)

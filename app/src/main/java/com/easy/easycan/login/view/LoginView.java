@@ -11,4 +11,5 @@ import com.easy.easycan.login.bean.LoginBean;
  */
 public interface LoginView extends BaseView {
     void loginSuccess(LoginBean model);
+    void loginFail(String meg);
 }

@@ -24,12 +24,15 @@ import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.easy.easycan.R;
 import com.easy.easycan.base.BaseActivity;
 import com.easy.easycan.home.bean.NewsTitleBaseBean;
+import com.easy.easycan.me.setting.SettingActivity;
 import com.easy.easycan.me.setting.updateimg.bean.UploadBean;
 import com.easy.easycan.network.NetHelper;
 import com.easy.easycan.util.ClickCallback;
+import com.easy.easycan.util.CommonUtils;
 import com.easy.easycan.util.LogUtils;
 import com.easy.easycan.util.img.EasyGlide;
 import com.easy.easycan.view.PickPhotoDialog;
@@ -106,6 +109,7 @@ private UploadBean uploadBean;
     protected void initView() {
         initTopBar();
         uploadPictureImg = findViewById(R.id.upload_picture_img);
+        EasyGlide.loadImage(this, SPUtils.getInstance().getString(CommonUtils.AVATAR),uploadPictureImg);
     }
 
     private void initTopBar() {

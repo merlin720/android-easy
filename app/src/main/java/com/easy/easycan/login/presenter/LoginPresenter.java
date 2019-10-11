@@ -47,6 +47,7 @@ public class LoginPresenter extends BasePresenter {
                         LoginBean bean = new Gson().fromJson(data, LoginBean.class);
                         loginView.loginSuccess(bean);
                     } else {
+                        loginView.loginFail(response.getString("message"));
                         ToastUtils.show(response.getString("message"));
                     }
                 } catch (JSONException e) {
@@ -56,7 +57,7 @@ public class LoginPresenter extends BasePresenter {
 
             @Override
             public void onError(ANError anError) {
-
+                ToastUtils.show( anError.getErrorBody());
             }
         });
     }

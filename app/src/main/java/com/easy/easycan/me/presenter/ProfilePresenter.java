@@ -7,6 +7,8 @@ import com.easy.easycan.me.model.ProfileBaseModel;
 import com.easy.easycan.me.view.ProfileView;
 import com.easy.easycan.network.NetHelper;
 import com.easy.easycan.util.CommonUtils;
+import com.easy.easycan.util.LogUtils;
+import com.hjq.toast.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +33,7 @@ public class ProfilePresenter extends BasePresenter {
         NetHelper.get(CommonUtils.GET_PROFILE,param).getAsObject(ProfileBaseModel.class, new ParsedRequestListener<ProfileBaseModel>() {
             @Override
             public void onResponse(ProfileBaseModel response) {
+
                 if (response.isSuccess()) {
                     mView.showData(response.getData());
                 }else {
@@ -40,7 +43,7 @@ public class ProfilePresenter extends BasePresenter {
 
             @Override
             public void onError(ANError anError) {
-
+                LogUtils.e(anError.getErrorDetail());
             }
         });
     }

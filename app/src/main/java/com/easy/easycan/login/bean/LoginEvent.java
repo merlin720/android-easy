@@ -7,6 +7,9 @@ package com.easy.easycan.login.bean;
  * description
  */
 public class LoginEvent {
+    public LoginEvent(int code) {
+        this.code = code;
+    }
 
     public static int LOGIN_SUCCESS = 0;
 

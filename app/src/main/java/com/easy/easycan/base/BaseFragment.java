@@ -38,7 +38,7 @@ public abstract class BaseFragment extends QMUIFragment {
      * @return the boolean
      */
     protected boolean isImmersionBarEnabled() {
-        return true;
+        return false;
     }
 
     @Override
